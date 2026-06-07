@@ -53,6 +53,37 @@
             height: 100%;
             border: none;
         }
+
+        /* 動画と横幅をそろえたコメント欄 */
+        .video-comment {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin-top: -10px; /* 動画コンテナ下の余白を詰める */
+            margin-bottom: 30px;
+            color: #444;
+            font-size: 15px;
+            line-height: 1.7;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .video-comment p {
+            margin: 0 0 8px 0;
+        }
+
+        .video-comment p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* スマホ表示では文字を少し小さく */
+        @media (max-width: 600px) {
+            .video-comment {
+                font-size: 14px;
+                padding: 12px 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,6 +98,10 @@
                 allowfullscreen>
             </iframe>
         </div>
+        <div class="video-comment">
+            <p>秀帆の100M走をゴール正面から捉えたアングル001です。スタートの飛び出しから加速していく様子がよくわかります。</p>
+            <p>後半の伸びにもぜひ注目してご覧ください。（※コメントは後で差し替え予定）</p>
+        </div>
 
         <div class="video-title">秀帆　100Mアングル002</div>
         <div class="video-container">
@@ -77,6 +112,10 @@
                 allowfullscreen>
             </iframe>
         </div>
+        <div class="video-comment">
+            <p>同じ100M走を別アングル（002）から撮影した映像です。アングル001と見比べると走りのフォームの違いがよくわかります。</p>
+            <p>横からの視点でスピード感が伝わる一本です。（※コメントは後で差し替え予定）</p>
+        </div>
 
         <div class="video-title">秀帆　ソーラン節</div>
         <div class="video-container">
@@ -86,6 +125,10 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen>
             </iframe>
+        </div>
+        <div class="video-comment">
+            <p>秀帆によるソーラン節の演舞です。力強い掛け声と息の合った動きが見どころとなっています。</p>
+            <p>練習の成果が詰まった迫力のパフォーマンスをお楽しみください。（※コメントは後で差し替え予定）</p>
         </div>
 
 
@@ -98,6 +141,10 @@
                 allowfullscreen>
             </iframe>
         </div>
+        <div class="video-comment">
+            <p>歌帆の全学年クラス選抜リレーです。各クラスの代表が集まり、バトンをつなぐ白熱の展開となっています。</p>
+            <p>選抜選手ならではのスピード勝負と、手に汗握るバトンパスにご注目ください。（※コメントは後で差し替え予定）</p>
+        </div>
 
 
         <div class="video-title">歌帆　クラス対抗全員リレー</div>
@@ -108,6 +155,10 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen>
             </iframe>
+        </div>
+        <div class="video-comment">
+            <p>歌帆のクラス対抗全員リレーです。クラス全員が走者となり、最後まで誰が勝つかわからない総力戦が繰り広げられます。</p>
+            <p>クラスの団結が光る、運動会のクライマックスにふさわしい一本です。（※コメントは後で差し替え予定）</p>
         </div>
     </div>
 
