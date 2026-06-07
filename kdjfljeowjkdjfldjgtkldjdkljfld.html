@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイビデオ公開ページ</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .video-title:first-child {
+            margin-top: 0;
+        }
+
+        /* レスポンシブに動画の比率（16:9）を保つためのコンテナ */
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 の比率を維持 */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        /* プレイヤー自体のスタイル */
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <div class="video-title">秀帆100Mアングル001</div>
+        <div class="video-container">
+            <iframe 
+                src="https://youtu.be/uGd3td2-_sI" 
+                title="秀帆　100Mアングル001" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="video-title">秀帆　100Mアングル002</div>
+        <div class="video-container">
+            <iframe 
+                src="https://youtu.be/jxakVwJ6Np8"
+                title="秀帆　100Mアングル002" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="video-title">秀帆　ソーラン節</div>
+        <div class="video-container">
+            <iframe 
+                src="https://youtu.be/rOoDBZOKSzE"
+                title="秀帆　ソーラン節" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+
+        <div class="video-title">歌帆　全学年クラス選抜リレー</div>
+        <div class="video-container">
+            <iframe 
+                src="https://youtu.be/xkWypQYy4LM"
+                title="歌帆　全学年クラス選抜リレー" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+
+        <div class="video-title">歌帆　クラス対抗全員リレー</div>
+        <div class="video-container">
+            <iframe 
+                src="https://youtu.be/oqX_I8wwd_o"
+                title="歌帆　クラス対抗全員リレー" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+</body>
+</html>
