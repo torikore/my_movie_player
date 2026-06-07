@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Hello World</title>
+    <style>
+        /* 画面全体のスタイルリセットと中央配置の設定 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* 画面いっぱいに広げてGridで真ん中に寄せる */
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background-color: #1a1a1a; /* 文字が映えるようにダーク背景 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* カラフルな文字のスタイル */
+        .colorful-text {
+            /* レスポンシブなフォントサイズ（画面幅に応じてスムーズに変化） */
+            font-size: clamp(2.5rem, 8vw, 6rem); 
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 0 20px;
+            
+            /* グラデーション文字の魔法 */
+            background: linear-gradient(45deg, #ff007f, #ffaa00, #00ffaa, #00aaff, #9900ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* ほんのり動くアニメーション（おまけ） */
+            animation: shine 5s linear infinite;
+        }
+
+        /* グラデーションを動かすアニメーション */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="colorful-text">Hello World!</h1>
+
+</body>
+</html>
