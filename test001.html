@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aurora UI — Modern UI/UX Showcase</title>
+<style>
+  /* ===== デザイントークン ===== */
+  :root {
+    --bg: #0b0d17;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-border: rgba(255, 255, 255, 0.12);
+    --text: #f4f6ff;
+    --text-dim: #a9b0cf;
+    --accent: #7c5cff;
+    --accent-2: #00e0c6;
+    --glow: rgba(124, 92, 255, 0.55);
+    --radius: 22px;
+    color-scheme: dark;
+  }
+
+  html[data-theme="light"] {
+    --bg: #eef1fb;
+    --surface: rgba(255, 255, 255, 0.65);
+    --surface-border: rgba(20, 20, 50, 0.08);
+    --text: #14163a;
+    --text-dim: #4a4f78;
+    --accent: #5b3df5;
+    --accent-2: #00a896;
+    --glow: rgba(91, 61, 245, 0.35);
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+
+  /* ===== 動くオーロラ背景 ===== */
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    filter: blur(60px);
+    opacity: 0.7;
+  }
+  .aurora span {
+    position: absolute;
+    width: 45vmax;
+    height: 45vmax;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    animation: float 18s ease-in-out infinite alternate;
+  }
+  .aurora span:nth-child(1) { background: var(--accent);   top: -10%; left: -5%; }
+  .aurora span:nth-child(2) { background: var(--accent-2); bottom: -15%; right: -5%; animation-delay: -6s; }
+  .aurora span:nth-child(3) { background: #ff5cab; top: 30%; right: 25%; animation-delay: -12s; }
+
+  @keyframes float {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(8vw, 6vh) scale(1.2); }
+    100% { transform: translate(-6vw, -4vh) scale(0.9); }
+  }
+
+  /* ===== レイアウト ===== */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px clamp(20px, 6vw, 80px);
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(14px);
+    z-index: 10;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--surface-border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  .theme-toggle:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--glow); }
+
+  .hero {
+    text-align: center;
+    padding: clamp(60px, 12vh, 140px) 20px 80px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2), #ff5cab);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p {
+    margin: 22px auto 0;
+    max-width: 560px;
+    color: var(--text-dim);
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+  }
+
+  /* スクロール進捗バー (CSS Scroll-driven Animations) */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    width: 100%;
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    z-index: 20;
+    transform: scaleX(0);
+    animation: grow linear;
+    animation-timeline: scroll(root);
+  }
+  @keyframes grow { to { transform: scaleX(1); } }
+
+  /* ===== 統計セクション ===== */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+  }
+  @media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius);
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    /* スクロールに入った時にフェードイン */
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .stat .num {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .stat .label { color: var(--text-dim); margin-top: 6px; font-weight: 500; }
+
+  /* ===== 3Dティルトカード ===== */
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .section-sub { text-align: center; color: var(--text-dim); margin-bottom: 50px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 140px;
+  }
+  .card {
+    position: relative;
+    border-radius: var(--radius);
+    padding: 34px 28px;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    backdrop-filter: blur(12px);
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.3s ease;
+    will-change: transform;
+    overflow: hidden;
+  }
+  /* マウス位置に追従する光のスポット */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      400px circle at var(--mx, 50%) var(--my, 50%),
+      var(--glow), transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .card:hover::before { opacity: 1; }
+  .card .icon {
+    width: 54px; height: 54px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    transform: translateZ(40px);
+    margin-bottom: 20px;
+  }
+  .card h3 { font-size: 1.25rem; margin-bottom: 10px; transform: translateZ(30px); }
+  .card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; transform: translateZ(20px); }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  /* ===== View Transitions: テーマ切替の波紋 ===== */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-new(root) {
+    animation: reveal-clip 0.5s ease-in-out;
+  }
+  @keyframes reveal-clip {
+    from { clip-path: circle(0% at var(--x, 50%) var(--y, 50%)); }
+    to   { clip-path: circle(150% at var(--x, 50%) var(--y, 50%)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="aurora"><span></span><span></span><span></span></div>
+  <div class="progress"></div>
+
+  <header>
+    <div class="logo">◇ Aurora UI</div>
+    <button class="theme-toggle" id="themeBtn" aria-label="テーマ切り替え">
+      <span id="themeIcon">🌙</span><span id="themeText">ダーク</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <h1>最新の Web で作る<br /><span class="grad">かっこいい体験</span></h1>
+    <p>View Transitions・Scroll-driven Animations・3D ティルトを詰め込んだ、純粋な HTML / CSS / JavaScript のショーケースです。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><div class="num" data-count="120">0</div><div class="label">FPS スムーズ</div></div>
+    <div class="stat"><div class="num" data-count="0" data-suffix="kb">0</div><div class="label">フレームワーク不要</div></div>
+    <div class="stat"><div class="num" data-count="100" data-suffix="%">0</div><div class="label">モダン CSS 活用</div></div>
+  </section>
+
+  <h2 class="section-title">3 つのモダン機能</h2>
+  <p class="section-sub">マウスを乗せたり、スクロールしたり、テーマを切り替えてみてください。</p>
+
+  <section class="cards" id="cards">
+    <div class="card">
+      <div class="icon">🪄</div>
+      <h3>3D ティルトカード</h3>
+      <p>ポインターの位置を追跡し、CSS の 3D transform でカードがリアルタイムに傾きます。光のスポットも追従。</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌗</div>
+      <h3>View Transitions テーマ</h3>
+      <p>View Transitions API でクリック位置から波紋状に広がる、滑らかなダーク / ライト切り替えを実現。</p>
+    </div>
+    <div class="card">
+      <div class="icon">📜</div>
+      <h3>スクロール連動演出</h3>
+      <p>CSS Scroll-driven Animations による進捗バーと、ビューポート進入で要素がフェードインします。</p>
+    </div>
+  </section>
+
+  <footer>Built with vanilla HTML · CSS · JavaScript — 2026</footer>
+
+<script>
+  /* ===== 1. テーマ切り替え (View Transitions API) ===== */
+  const html = document.documentElement;
+  const btn = document.getElementById("themeBtn");
+  const icon = document.getElementById("themeIcon");
+  const text = document.getElementById("themeText");
+
+  function applyThemeUI() {
+    const dark = html.dataset.theme === "dark";
+    icon.textContent = dark ? "🌙" : "☀️";
+    text.textContent = dark ? "ダーク" : "ライト";
+  }
+  applyThemeUI();
+
+  btn.addEventListener("click", (e) => {
+    const next = html.dataset.theme === "dark" ? "light" : "dark";
+    // クリック座標を波紋の中心に
+    html.style.setProperty("--x", e.clientX + "px");
+    html.style.setProperty("--y", e.clientY + "px");
+
+    const swap = () => { html.dataset.theme = next; applyThemeUI(); };
+
+    if (document.startViewTransition) {
+      document.startViewTransition(swap);
+    } else {
+      swap();
+    }
+  });
+
+  /* ===== 2. 3D ティルトカード ===== */
+  document.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rotX = (0.5 - py) * 14;
+      const rotY = (px - 0.5) * 14;
+      card.style.transform =
+        `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+      card.style.setProperty("--mx", px * 100 + "%");
+      card.style.setProperty("--my", py * 100 + "%");
+    });
+    card.addEventListener("pointerleave", () => {
+      card.style.transform = "perspective(800px) rotateX(0) rotateY(0)";
+    });
+  });
+
+  /* ===== 3. 数字カウントアップ (IntersectionObserver) ===== */
+  const nums = document.querySelectorAll(".num");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || "";
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  nums.forEach((n) => io.observe(n));
+</script>
+</body>
+</html>
