@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1f5c45">
+  <title>プラド売却 進め方手順書（2026-09-14）</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --bg-card: #fffcf7;
+      --ink: #1c1916;
+      --muted: #5c564c;
+      --line: #e2dbcf;
+      --accent: #1f5c45;
+      --accent-2: #164536;
+      --accent-soft: #e6f3ec;
+      --danger: #9b2c2c;
+      --danger-soft: #fdeaea;
+      --warn: #8a5800;
+      --warn-soft: #fff4dc;
+      --info: #1d4e7a;
+      --info-soft: #e7f1f8;
+      --ok: #1f5c45;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(28, 25, 22, .05), 0 10px 28px rgba(28, 25, 22, .07);
+      --max: 46rem;
+      --nav-h: 3.4rem;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + var(--safe-top) + 12px); }
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Noto Sans JP", Meiryo, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.75;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { color: var(--accent); }
+    img { max-width: 100%; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      min-height: calc(var(--nav-h) + var(--safe-top));
+      padding: var(--safe-top) .9rem 0;
+      background: rgba(31, 92, 69, .97);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(22, 69, 54, .25);
+    }
+    .topbar h1 {
+      flex: 1;
+      margin: 0;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .topbar button {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      border-radius: 999px;
+      padding: .4rem .85rem;
+      font: inherit;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .topbar button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+    .toc-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(28, 25, 22, .46);
+      display: none;
+    }
+    .toc-panel.open { display: block; }
+    .toc-sheet {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(22rem, 92vw);
+      height: 100%;
+      background: #fffcf7;
+      overflow: auto;
+      padding: calc(var(--safe-top) + 1rem) 1.1rem calc(var(--safe-bottom) + 1.5rem);
+      box-shadow: -8px 0 32px rgba(28,25,22,.18);
+    }
+    .toc-sheet h2 { margin: 0 0 .8rem; font-size: 1.05rem; }
+    .toc-sheet ol { margin: 0; padding: 0 0 0 1.2rem; }
+    .toc-sheet a {
+      display: inline-block;
+      padding: .28rem 0;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .toc-close {
+      float: right;
+      border: 0;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: .25rem .7rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .wrap { width: min(var(--max), calc(100% - 1.6rem)); margin: 0 auto 4rem; padding-top: 1.1rem; }
+
+    .hero {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.15rem 1.1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .hero .kicker {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .hero h2 {
+      margin: .15rem 0 .55rem;
+      font-size: clamp(1.35rem, 4.6vw, 1.85rem);
+      line-height: 1.3;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin: 0 0 .85rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      background: var(--accent-soft);
+      color: var(--accent-2);
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .note {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .banner {
+      border-radius: var(--radius);
+      padding: .9rem 1rem;
+      margin: 0 0 1rem;
+      border: 1px solid;
+    }
+    .banner.danger { background: var(--danger-soft); border-color: #f0c8c8; }
+    .banner.warn { background: var(--warn-soft); border-color: #f0dba8; }
+    .banner.info { background: var(--info-soft); border-color: #c5dcef; }
+    .banner.ok { background: var(--accent-soft); border-color: #c5e3d3; }
+    .banner strong { display: block; margin-bottom: .2rem; }
+    .banner ul { margin: .3rem 0 0; padding-left: 1.15rem; }
+
+    section.card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.05rem 1.05rem 1.15rem;
+      margin: 0 0 1rem;
+    }
+    section.card > h2 {
+      margin: 0 0 .7rem;
+      font-size: 1.18rem;
+      line-height: 1.35;
+      padding-bottom: .55rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    h3 { margin: 1.15rem 0 .45rem; font-size: 1.02rem; }
+    h4 { margin: .95rem 0 .35rem; font-size: .95rem; color: var(--accent-2); }
+    p { margin: .45rem 0; }
+    ul, ol { margin: .4rem 0 .7rem; padding-left: 1.2rem; }
+    li { margin: .22rem 0; }
+    .sub { color: var(--muted); font-size: .92rem; }
+
+    .grid-2 {
+      display: grid;
+      gap: .75rem;
+    }
+    @media (min-width: 700px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .box {
+      border-radius: 12px;
+      padding: .75rem .85rem;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .box.ok { background: var(--accent-soft); border-color: #c5e3d3; }
+    .box.no { background: var(--danger-soft); border-color: #f0c8c8; }
+    .box.warn { background: var(--warn-soft); border-color: #f0dba8; }
+    .box.info { background: var(--info-soft); border-color: #c5dcef; }
+    .box h3 { margin-top: 0; }
+
+    .phase {
+      display: grid;
+      gap: .5rem;
+    }
+    .phase-item {
+      display: grid;
+      grid-template-columns: 4.6rem 1fr;
+      gap: .55rem;
+      align-items: start;
+      padding: .65rem .7rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .phase-item b {
+      color: var(--accent-2);
+      font-size: .82rem;
+    }
+
+    .day {
+      border-left: 4px solid var(--accent);
+      padding: .15rem 0 .15rem .8rem;
+      margin: .7rem 0;
+    }
+
+    label.check {
+      display: flex;
+      gap: .55rem;
+      align-items: flex-start;
+      margin: .28rem 0;
+      cursor: pointer;
+    }
+    label.check input {
+      margin-top: .35rem;
+      width: 1.05rem;
+      height: 1.05rem;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .place {
+      display: inline-block;
+      min-width: 7.5rem;
+      margin-left: .4rem;
+      border: 0;
+      border-bottom: 1px dashed #b8b09f;
+      background: transparent;
+      font: inherit;
+      color: var(--ink);
+    }
+
+    .table-wrap { overflow-x: auto; margin: .5rem 0 1rem; -webkit-overflow-scrolling: touch; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+      min-width: 36rem;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: .45rem .55rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--accent-soft); color: var(--accent-2); }
+    .muted-row td { color: var(--muted); }
+
+    .steps { counter-reset: step; list-style: none; padding: 0; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 2.1rem;
+      margin: .45rem 0;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: .08rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
+
+    .quote {
+      background: #fff;
+      border-left: 4px solid var(--accent);
+      margin: .7rem 0;
+      padding: .7rem .9rem;
+      border-radius: 0 10px 10px 0;
+      white-space: pre-wrap;
+    }
+
+    .url {
+      display: inline-block;
+      word-break: break-all;
+      font-size: .88rem;
+    }
+
+    .to-top {
+      position: fixed;
+      right: .9rem;
+      bottom: calc(.9rem + var(--safe-bottom));
+      z-index: 30;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+      padding: 0 0 2rem;
+    }
+
+    @media (min-width: 720px) {
+      body { font-size: 17px; }
+      .wrap { width: min(var(--max), calc(100% - 2.4rem)); }
+      .hero, section.card { padding: 1.35rem 1.4rem 1.45rem; }
+    }
+
+    @media print {
+      .topbar, .toc-panel, .to-top { display: none !important; }
+      html { scroll-padding-top: 0; }
+      body { background: #fff; font-size: 11pt; }
+      .wrap { width: auto; margin: 0; padding: 0; }
+      section.card, .hero, .banner, .box, .phase-item {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>プラド売却 進め方手順書</h1>
+    <button type="button" id="toc-open" aria-controls="toc-panel" aria-expanded="false">目次</button>
+  </header>
+
+  <div class="toc-panel" id="toc-panel" hidden>
+    <div class="toc-sheet" role="dialog" aria-labelledby="toc-title">
+      <button type="button" class="toc-close" id="toc-close">閉じる</button>
+      <h2 id="toc-title">目次</h2>
+      <ol>
+        <li><a href="#sec-0">0. 前提</a></li>
+        <li><a href="#sec-1">1. 今回の目標の切り替え</a></li>
+        <li><a href="#sec-2">2. 全体方針</a></li>
+        <li><a href="#sec-3">3. 全体スケジュール</a></li>
+        <li><a href="#sec-4">4. 第0段（帰省前）</a></li>
+        <li><a href="#sec-5">5. 紙の情報</a></li>
+        <li><a href="#sec-6">6. 査定用の写真撮影</a></li>
+        <li><a href="#sec-7">7. オンライン査定サイト</a></li>
+        <li><a href="#sec-8">8. 第1段 現地の進め方</a></li>
+        <li><a href="#sec-9">9. 売ったあとの移動</a></li>
+        <li><a href="#sec-10">10. 第2段 相場と実査定</a></li>
+        <li><a href="#sec-11">11. 業者比較の観点</a></li>
+        <li><a href="#sec-12">12. 家族相談</a></li>
+        <li><a href="#sec-13">13. 第3段 売却実行</a></li>
+        <li><a href="#sec-14">14. 個人情報の扱い</a></li>
+        <li><a href="#sec-15">15. うまくいかないときの分岐</a></li>
+        <li><a href="#app-a">付録A. 現地タイムボックス</a></li>
+        <li><a href="#app-b">付録B. 紙のチェック</a></li>
+        <li><a href="#app-c">付録C. 撮影リスト</a></li>
+        <li><a href="#app-d">付録D. 実査定で聞くこと</a></li>
+        <li><a href="#app-e">付録E. 戻ったあとに共有する情報</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="kicker">Prado sale playbook</div>
+      <h2>プラド売却 進め方手順書</h2>
+      <div class="meta">
+        <span class="pill">作成日 2026-09-14</span>
+        <span class="pill">対象 2026-09-14 〜 売却完了</span>
+        <span class="pill">現地 09-21着 〜 09-24発</span>
+      </div>
+      <p class="note">この版の位置づけ: 2026-09-02版を正本として引き継ぎ、第1段の目標を更新した実行版。金額・禁止事項・家族方針は09-02版と同じ。矛盾したら「契約しない」「連絡先は亮史さんだけ」を優先する。</p>
+    </div>
+
+    <div class="banner danger">
+      <strong>矛盾したら、これを優先する</strong>
+      <ul>
+        <li>現地では契約しない</li>
+        <li>業者への連絡先は亮史さんだけ</li>
+      </ul>
+    </div>
+
+    <section class="card" id="sec-0">
+      <h2>0. この手順書の前提（ヒヤリング反映）</h2>
+      <p><strong>目的:</strong> プラドを売り、手残りを両親の生活用口座へ。生活費・医療費の上積みと、車庫を自宅畑にする資金。</p>
+      <p><strong>成功:</strong> 名義変更まで問題なく終わり、両親に負担をかけない。希望200万円、最低50万円。</p>
+      <p><strong>避けたい:</strong> 買い叩き、売れ残り、父親・母親への手続き負担。</p>
+      <p><strong>方針:</strong> 負担の少なさを優先。亮史さんが主導。業者は使うが、その場の1社では決めない。</p>
+      <p><strong>決定:</strong> 価格の下限も契約も、父親を含めてみんなで相談。</p>
+      <p><strong>現地:</strong> 2026-09-21着 〜 09-24発。四万十市の実家。</p>
+      <p><strong>温度感:</strong> 父親は早く売りたい側。母親は面倒が嫌い。現地で父親の今の気持ちを見てから車の確認に入る。</p>
+      <p><strong>代理人:</strong> メイン亮史さん、サブ美樹さん（現地同行なし、スマホ連絡は可）。</p>
+      <p><strong>連絡先:</strong> 業者には亮史さんの連絡先だけ出す。</p>
+      <p><strong>移動:</strong> 軽は残す。母親は免許なし。電動自転車と公共交通も候補。</p>
+      <p><strong>畑の土地売却:</strong> この案件の後。今回は「確認」まで。</p>
+
+      <div class="box warn">
+        <h3>金額について</h3>
+        <ul>
+          <li>200万円は希望であり、約束ではない。</li>
+          <li>50万円は「これ以下は要相談」の出発点。相場を見てみんなで上げ下げする。</li>
+          <li>年式が分かるまで、金額で走らない。</li>
+          <li>店頭の売り希望価格と、手元に入る買取額を混ぜない。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="sec-1">
+      <h2>1. 今回の目標の切り替え（09-02版からの変更点）</h2>
+      <p>第1段（9/21〜24）の目標は、実車を業者に見せる査定ではなく、<strong>「査定に必要な情報を集めて持ち帰る」</strong>こと。</p>
+
+      <div class="box ok">
+        <h3>滞在中にやること（本命）</h3>
+        <ul>
+          <li>父親の今の気持ちを聞く</li>
+          <li>車検証・保険・記録簿などの紙を探す</li>
+          <li>オンライン査定に使える写真を撮る</li>
+          <li>年式・距離・車検・燃料など、相場検索に必要な数字を控える</li>
+        </ul>
+      </div>
+
+      <h3>滞在中または帰京直後にやること（本命の続き）</h3>
+      <ul>
+        <li>写真と車検証情報で、だいたいの相場をつかむ</li>
+        <li>オンライン査定サイトを少数使う（連絡先は亮史さんのみ）</li>
+      </ul>
+
+      <h3>次のフェーズ（第2段）に送ること</h3>
+      <ul>
+        <li>業者が本物を見て出す実査定</li>
+        <li>契約、印鑑証明の取得、引取</li>
+      </ul>
+
+      <div class="box info">
+        <h3>例外（うまくいったときだけ）</h3>
+        <ul>
+          <li>父親が前向きで、亮史さんが同席でき、母親の場が荒れていなければ、滞在中に地元店の実査定を1件入れてもよい。</li>
+          <li>入れられなくても失敗ではない。写真が揃えば成功。</li>
+          <li>入れられてもその場では契約しない。</li>
+        </ul>
+      </div>
+
+      <h3>この切り替えの理由</h3>
+      <ul>
+        <li>滞在が短い（到着21日〜出発24日）。畑確認・片付けもある。</li>
+        <li>9/21は月曜で、高知トヨタ中村店は毎週月曜定休の可能性が高い。</li>
+        <li>実査定は「本物を見る次のフェーズ」として分けた方が、急かされにくい。</li>
+        <li>オンラインで相場の幅が見えれば、家族相談の材料になる。</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-2">
+      <h2>2. 全体方針（これだけ守る）</h2>
+      <div class="grid-2">
+        <div class="box ok">
+          <h3>やってよいこと</h3>
+          <ul>
+            <li>現地で写真・車検証・書類の所在を記録する</li>
+            <li>父親の「今も売りたいか」を先に聞く</li>
+            <li>帰京後（または滞在中の夜）、写真でオンライン査定・相場検索する</li>
+            <li>亮史さんがいるときだけ、来宅または近隣店の実査定を1件（例外）</li>
+            <li>査定額は「参考」として持ち帰り、家族で相談する</li>
+          </ul>
+        </div>
+        <div class="box no">
+          <h3>やってはいけないこと</h3>
+          <ul>
+            <li>現地で売買契約書にサインする</li>
+            <li>その場の「今日だけこの金額」に急かされて決める</li>
+            <li>両親の電話番号を査定サイトや業者に書く</li>
+            <li>一括査定に氏名・住所・電話をまとめて流す</li>
+            <li>印鑑証明を今のうちに何通も取る（発行からおおむね3か月以内が必要なため、契約が近づいてから）</li>
+            <li>車台番号・口座番号・印鑑証明を、このチャットやSNSに貼る</li>
+            <li>母親が運転できる前提で話を進める（免許なし）</li>
+            <li>プラドを売ったあと、誰が軽を運転するか確認しないまま契約する</li>
+            <li>個人売買を第一候補にする（名義変更負担・金銭トラブル・父親の外出）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="sec-3">
+      <h2>3. 全体スケジュール</h2>
+      <div class="phase">
+        <div class="phase-item"><b>第0段</b><span>9/14 〜 9/20　帰省前の準備。書類の「探し方」を頭に入れる。実物は現地。</span></div>
+        <div class="phase-item"><b>第1段</b><span>9/21 〜 9/24　現地で情報収集（紙・写真・聞き取り）。原則、契約しない。</span></div>
+        <div class="phase-item"><b>第2段</b><span>9月末 〜 10月　オンラインで相場把握 → 家族相談 → 実査定の手配</span></div>
+        <div class="phase-item"><b>第3段</b><span>決定後1〜3週　委任状・実印・印鑑証明で売却実行、入金確認</span></div>
+        <div class="phase-item"><b>第4段</b><span>入金後　保険停止、鍵・書類の残、車庫→畑は別途（畑の土地売却は別プロジェクト）</span></div>
+      </div>
+
+      <h3>9月現地の曜日（2026年）</h3>
+      <div class="day"><strong>9/21 月</strong> 到着日。温度感 → 書類探し → 撮影開始。実査定は入れなくてよい</div>
+      <div class="day"><strong>9/22 火</strong> 撮影と書類の本命日。撮り残しが出ないようにする</div>
+      <div class="day"><strong>9/23 水</strong> 撮り残し回収、軽・生活・畑。夜に写真を整理して相場検索してもよい</div>
+      <div class="day"><strong>9/24 木</strong> 出発。実印と書類の「場所」だけメモ</div>
+
+      <p>車に使う時間の上限: 半日 + 予備の半日。<br>
+      オンライン査定の申込は、現地の夜か帰京後でよい。滞在中に急いで出さなくてよい。</p>
+    </section>
+
+    <section class="card" id="sec-4">
+      <h2>4. 第0段（〜9/20）帰省前にできること</h2>
+      <p>車検証の現物は四万十にある想定。帰省前に父親へ「車検証の写真を送れ」とは頼まない。<br>
+      やるのは「現地で迷わないこと」と、「紙を探す順番を決めておくこと」。</p>
+
+      <h3>4-1. 美樹さんと共有する（10分）</h3>
+      <p>伝えること:</p>
+      <ul>
+        <li>9月は売らず、調べて帰る。実査定は次のフェーズ</li>
+        <li>契約は家族みんなで相談してから</li>
+        <li>現地で父親の温度感が下がったら、無理に車を触らない</li>
+        <li>困ったら亮史さんから電話する。書類の写真が必要なら協力してほしい</li>
+        <li>業者の電話は亮史さん宛</li>
+      </ul>
+
+      <h3>4-2. スマホの準備</h3>
+      <ul>
+        <li>写真用アルバムを1つ作る（例: 2026-09 プラド）
+          <ul>
+            <li>01_書類 / 02_外装 / 03_傷サビ / 04_内装 / 05_エンジン警告 / 06_装備 / 07_軽と生活</li>
+          </ul>
+        </li>
+        <li>この手順書をオフラインでも見られるようにする（印刷1部でも可）</li>
+        <li>懐中電灯（下回りのサビ用）。スマホライトでも可</li>
+        <li>充電器、モバイルバッテリー</li>
+        <li>メモ用のノートか、スマホのメモ</li>
+        <li>可能なら簡易メジャー（タイヤ溝の目安。なければ目視で可）</li>
+        <li>可能ならウエス。ホイール・ナンバーまわりの泥を軽く拭く用</li>
+      </ul>
+
+      <h3>4-3. プラドの世代を目で覚える（現地で車検証を開く前の補助）</h3>
+      <ul>
+        <li>120系（2002〜2009）丸みが強い、比較的コンパクトに見える</li>
+        <li>150系前期（2009〜2013）縦基調のグリル</li>
+        <li>150系中期（2013〜2017）いわゆる涙目ライト、グリルが大きい</li>
+        <li>150系後期（2017〜2024）ライトがシャープ、ボンネット中央が凹む</li>
+      </ul>
+      <p class="sub">※2024年以降の新型は国内では「ランドクルーザー250」で、プラド名義ではないことが多い。バッジが「プラド」なら、150系かそれ以前を疑う。</p>
+
+      <h3>4-4. 相場サイトの「検索の型」だけ先に覚える</h3>
+      <p>検索自体は車検証が撮れてから。</p>
+      <ul>
+        <li>グーネット <a class="url" href="https://www.goo-net.com/">https://www.goo-net.com/</a></li>
+        <li>カーセンサー <a class="url" href="https://www.carsensor.net/">https://www.carsensor.net/</a></li>
+      </ul>
+      <ol class="steps">
+        <li>車名: ランドクルーザープラド</li>
+        <li>年式を車検証の「初度登録年月」に合わせる</li>
+        <li>走行距離を前後2万kmくらいで見る</li>
+        <li>燃料（ガソリン / ディーゼル）を合わせる</li>
+        <li>掲載価格は「店頭の売り希望」であり、買取額ではない。目安: 買取は、似た売り物の下限〜中央より下、に出やすい</li>
+        <li>高知・四国の在庫と、全国の在庫を両方見る</li>
+      </ol>
+
+      <h3>4-5. 地元の実査定候補は「メモだけ」。予約はしない</h3>
+      <div class="box">
+        <p><strong>候補A</strong> 高知トヨタ 中村店<br>
+        四万十市具同360<br>
+        目安: ショールーム 9:30-18:00<br>
+        定休日: 毎週月曜・第2火曜（公式で再確認）<br>
+        公式: <a class="url" href="https://kochitoyota.co.jp/shop/nakamura">https://kochitoyota.co.jp/shop/nakamura</a></p>
+        <p><strong>候補B</strong> 同じ四万十市内のトヨタ系（カローラ等）<br>
+        <strong>候補C</strong> 大手買取の出張査定（連絡先は亮史さん）</p>
+        <p>第1段では原則呼ばない。第2段でオンライン相場を見たあとに検討する。</p>
+      </div>
+
+      <h3>4-6. 父親・母親への事前連絡（任意、短く）</h3>
+      <div class="quote">「21日に着く。車を急いで売る話はしない。
+まず体調と、今も売りたいかを聞かせてほしい。
+書類の場所と写真を撮って、あとでみんなで金額を見る。
+面倒な電話や来店は亮史がやる。」</div>
+      <p>売ることの説得はしない。温度感を下げないことが目的。帰省前に「車検証を写真で送れ」とは頼まない。</p>
+    </section>
+
+    <section class="card" id="sec-5">
+      <h2>5. 紙の情報 — 今から探しておくもの</h2>
+      <div class="box info">
+        <h3>考え方</h3>
+        <p>査定（オンライン）に必要なのは「写真と数字」。売却（名義変更）に必要なのは「原本と実印」。<br>
+        今やるのは、現地で迷わず見つけられるように種類と保管場所を知っておくこと。<br>
+        原本は持って帰らない。写真と「どこに置いてあるか」のメモで足りる。印鑑証明は今取らない。</p>
+      </div>
+
+      <h3>探し場所の定番（この順で見る）</h3>
+      <ol class="steps">
+        <li>車内のグローブボックス、サンバイザー、ドアポケット、シート下</li>
+        <li>車検証入れ（黒いまたは透明のビニールケース。車検証・自賠責・リサイクル券が一緒が多い）</li>
+        <li>家の引き出し、仏壇まわり、金庫、保険の封筒、確定申告の箱</li>
+        <li>ディーラーからもらったファイル（高知トヨタ等のロゴ）</li>
+        <li>郵便物の「自動車税」「保険会社」「陸運」関連</li>
+      </ol>
+
+      <h3>5-1. オンライン査定のために、現地で写真を撮る紙</h3>
+      <div class="banner warn"><strong>最優先。</strong>これがないと相場もオンライン査定も始まらない。</div>
+
+      <h4>(1) 自動車検査証（車検証）</h4>
+      <p>何のため: 年式・型式・車検満了・所有者・燃料・定員が分かる。ほぼ全サイトの入力元。</p>
+      <p>形の注意:</p>
+      <ul>
+        <li>従来のA4紙の車検証、または</li>
+        <li>2023年以降に車検を通した車はA6サイズの「電子車検証」（ICタグ付き厚紙）</li>
+      </ul>
+      <p>電子車検証のとき:</p>
+      <ul>
+        <li>券面だけでは所有者・車検満了日などが足りないことがある</li>
+        <li>一緒に渡されているA4の「自動車検査証記録事項」を必ず探す</li>
+        <li>記録事項が見当たらなければ、スマホの「車検証閲覧アプリ」でICを読む<br>
+          案内: <a class="url" href="https://www.denshishakensho-portal.mlit.go.jp/user/about/">https://www.denshishakensho-portal.mlit.go.jp/user/about/</a></li>
+      </ul>
+      <p>撮る面: 文字が読める距離で全体。裏・備考欄も。</p>
+      <div class="grid-2">
+        <div class="box ok"><strong>チャットに打ち込んでよい</strong><br>初度登録年月、型式、車検満了、燃料、定員、「所有者は父親」</div>
+        <div class="box no"><strong>チャットに出さない</strong><br>車台番号の全文、住所・氏名の全文</div>
+      </div>
+
+      <h4>(2) 走行距離が分かるメーター</h4>
+      <p>紙ではないが、車検証とセットで必須。イグニッションON（エンジンONが望ましい）で数字が読める写真。</p>
+
+      <h4>【あると査定の精度が上がる紙】</h4>
+      <h4>(3) 自賠責保険証明書</h4>
+      <p>何のため: 有効期限の確認。査定時は提示を求められることが多い。売却時は原本必須。<br>
+      場所: 車検証入れに同梱が最多。<br>
+      撮る: 保険期間・車名・ナンバーが読める面。証券番号はチャットに出さない。</p>
+
+      <h4>(4) 自動車リサイクル券（預託証明書）</h4>
+      <p>何のため: 売却時にほぼ必須。査定段階では所在確認で足りることが多い。<br>
+      場所: 車検証入れ、購入時のファイル。<br>
+      紛失しても紙の再発行はできない。自動車リサイクルシステムで預託状況を印刷すれば代用可。<br>
+      今は「ある／ない／場所」をメモ。あれば写真1枚。</p>
+
+      <h4>(5) メンテナンスノート（記録簿）と取扱説明書</h4>
+      <p>何のため: 定期点検の履歴。マフラー交換の証明にもなる。査定で加点・減点の材料。<br>
+      場所: グローブボックス、家のファイル。<br>
+      撮る: 表紙、最新の点検ページ、ディーラー交換の記載ページ。全ページは不要。</p>
+
+      <h4>(6) 任意保険の証券（または更新のはがき・アプリ画面）</h4>
+      <p>何のため: 査定そのものには必須ではない。売ったあとに解約するため、今「会社名と証券の場所」が要る。<br>
+      ヒヤリングでは任意保険は「不明」。現地で必ず探す。<br>
+      撮る: 会社名、満期、車両がプラドであること。証券番号・契約者住所はチャットに出さない。<br>
+      解約は売却・名義変更のあと。今はやらない。</p>
+
+      <h4>(7) 自動車税（種別割）の納税証明書、または納税通知・領収</h4>
+      <p>何のため: 売却時に求められる店がある。近年は電子確認で省略できる店も増えている。<br>
+      場所: 5月頃の県税の封筒、家の税金ファイル。<br>
+      今は所在確認と写真。再発行は契約が近づいてから。</p>
+
+      <h3>5-2. 売却（名義変更）のときに必要。今は「探して場所をメモ」</h3>
+      <p>原本は家に残す。写真は「あることの確認」用。持って帰らない。</p>
+
+      <h4>(8) 実印（父親＝所有者の想定）</h4>
+      <p>何のため: 譲渡証明書・委任状への押印。普通車の売却では必須。<br>
+      今やること: 父親に「どの印が実印か」を確認し、保管場所をメモ。押さない、持ち出さない。<br>
+      認印では普通車の名義変更はできない。</p>
+
+      <h4>(9) 印鑑登録証明書</h4>
+      <p>何のため: 普通車の名義変更。発行後おおむね3か月以内。店により1通または2通。<br>
+      今やらない: 役所で取ること。古い証明書が家にあっても、契約直前に取り直す。<br>
+      今やること: 「四万十市で父親が取れるか」「亮史さんの同行が必要か」を現地で聞く。<br>
+      住所が車検証と違う場合は、住民票（住所のつながり）が追加になる。車検証住所を見てメモ。</p>
+
+      <h4>(10) 譲渡証明書・委任状</h4>
+      <p>何のため: 店が名義変更を代行するときに必要。<br>
+      今やらない: 自作しない。店の指定用紙の方が早い。<br>
+      押すのは父親の実印。捨印を求められたら、どこまで直せるか聞いてから。</p>
+
+      <h4>(11) スペアキー</h4>
+      <p>何のため: 無いと減額されやすい。本数を数えて写真。場所: 家の鍵箱、車検証入れ。</p>
+
+      <h4>(12) ローン完済が分かる書類（該当時）</h4>
+      <p>想定は「完済のはず」。車検証の所有者が信販・ディーラーなら、所有権解除が先。契約せず持ち帰る。完済証明・解除書類を探す。</p>
+
+      <h4>(13) ナビ・ETCの個人情報、ETCカード</h4>
+      <p>売却前に削除・抜く。今は有無をメモ。</p>
+
+      <h4>(14) ロックナットのキー（社外ホイールのとき）、冬タイヤ、キャリア</h4>
+      <p>付属品は揃っているほど減点が少ない。有無を写真。</p>
+
+      <h3>5-3. 段階別の早見</h3>
+      <div class="box"><strong>今（帰省前）</strong><br>種類を覚える。現地の探し順を決める。印鑑証明は取らない。</div>
+      <div class="box ok"><strong>現地（9/21-24）</strong><br>車検証（または記録事項）とメーターは必ず撮る。自賠責、リサイクル券、記録簿、任意保険、納税、スペアキー、実印の場所。見つからないものは「無い」とメモ。再発行は第2段以降。</div>
+      <div class="box info"><strong>オンライン査定を出すとき</strong><br>必須: 車検証情報 + 走行距離 + 車の写真。あるとよい: 自賠責期限、記録簿、傷の写真。不要: 印鑑証明、実印の写真、口座。</div>
+      <div class="box warn"><strong>実査定・契約のとき（次フェーズ）</strong><br>車検証原本、自賠責原本、リサイクル券、実印、印鑑証明（新しいもの）、店の譲渡証明書・委任状。納税証明は店の指示に従う。</div>
+
+      <h3>5-4. 見つからないときの扱い（現地で慌てない）</h3>
+      <ul>
+        <li><strong>車検証が車に無い</strong> → 家を探す。再発行は運輸支局。第1段では無理に取りに行かない。写真が無ければオンライン査定は後回し。</li>
+        <li><strong>電子車検証だけで記録事項が無い</strong> → 車検証閲覧アプリ。無理ならディーラーに「記録事項の再印刷」を第2段で相談。</li>
+        <li><strong>自賠責が無い</strong> → 保険会社か車検時の店。車検が有効ならどこかに存在するはず。</li>
+        <li><strong>リサイクル券が無い</strong> → 自動車リサイクルシステムで照会（車台番号が要る。チャットには出さない）。</li>
+        <li><strong>任意保険が分からない</strong> → 通帳の引き落とし、郵便物、父親の記憶。分からなくても売却は止めない。解約漏れだけ後で直す。</li>
+        <li><strong>印鑑証明・実印が見つからない</strong> → 第1段の失敗ではない。契約前に四万十市で再登録・取得する話になる。</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-6">
+      <h2>6. 査定用の写真撮影 — どの部分を撮るか</h2>
+      <h3>原則</h3>
+      <ul>
+        <li>日中、屋外またはカーポートの明るい時間。逆光を避ける。</li>
+        <li>洗車はできれば。できなければ泥だけ落とす。無理に磨かない。</li>
+        <li>ナンバーは写ってよい。気になるなら後で自分用コピーだけ隠す。業者提出時は普通はそのまま。</li>
+        <li>傷は隠さない。無い傷を作らない。ある傷は必ず撮る。</li>
+        <li>1箇所につき「車全体のどこか分かる引き」と「寄りのアップ」があると伝わる。</li>
+        <li>動画は必須ではない。エンジン音・警告灯が気になるときだけ5〜10秒。</li>
+        <li>撮影順は下の番号どおり。迷ったら番号だけ消化する。</li>
+      </ul>
+      <p>所要: ていねいにやって90分。最低限だけなら30分。</p>
+
+      <h3>6-1. 最低限（これだけで主要サイトに出せる）</h3>
+      <label class="check"><input type="checkbox" data-key="min-01"> 01 車検証（全体。電子なら記録事項も）</label>
+      <label class="check"><input type="checkbox" data-key="min-02"> 02 メーター（走行距離が読める。エンジンON、警告灯も写る位置）</label>
+      <label class="check"><input type="checkbox" data-key="min-03"> 03 外装 右前方（車全体が入る）</label>
+      <label class="check"><input type="checkbox" data-key="min-04"> 04 外装 左前方</label>
+      <label class="check"><input type="checkbox" data-key="min-05"> 05 外装 右後方</label>
+      <label class="check"><input type="checkbox" data-key="min-06"> 06 外装 左後方</label>
+      <label class="check"><input type="checkbox" data-key="min-07"> 07 内装 運転席と助手席（背もたれ・シフトが見える）</label>
+      <label class="check"><input type="checkbox" data-key="min-08"> 08 キズやへこみがあればそのアップ（無ければ「目立った傷なし」とメモ）</label>
+      <p class="sub">カチエックス等は「必須8枚」と案内している。上の01〜07にインパネを足すとそれに近い。</p>
+
+      <h3>6-2. 推奨（オンラインの精度を上げる。第1段の本命）</h3>
+      <h4>A. 書類</h4>
+      <label class="check"><input type="checkbox" data-key="rec-a1"> 車検証 表</label>
+      <label class="check"><input type="checkbox" data-key="rec-a2"> 車検証 裏・備考（または自動車検査証記録事項の全体）</label>
+      <label class="check"><input type="checkbox" data-key="rec-a3"> 自賠責</label>
+      <label class="check"><input type="checkbox" data-key="rec-a4"> リサイクル券</label>
+      <label class="check"><input type="checkbox" data-key="rec-a5"> 記録簿の表紙と最新ページ</label>
+      <label class="check"><input type="checkbox" data-key="rec-a6"> 任意保険の会社名が分かる面</label>
+
+      <h4>B. 外装（車から2〜3m下がって、ボディ全体が切らない）</h4>
+      <label class="check"><input type="checkbox" data-key="rec-b1"> 真正面（グリル・ライト・ナンバー）</label>
+      <label class="check"><input type="checkbox" data-key="rec-b2"> 真後ろ</label>
+      <label class="check"><input type="checkbox" data-key="rec-b3"> 右側面（車体が水平に入る）</label>
+      <label class="check"><input type="checkbox" data-key="rec-b4"> 左側面</label>
+      <label class="check"><input type="checkbox" data-key="rec-b5"> 右斜め前、左斜め前、右斜め後、左斜め後</label>
+      <label class="check"><input type="checkbox" data-key="rec-b6"> 屋根（踏み台不要。高い位置からボンネット〜ルーフが分かれば可）</label>
+      <label class="check"><input type="checkbox" data-key="rec-b7"> フロントガラスの車検ステッカー</label>
+      <label class="check"><input type="checkbox" data-key="rec-b8"> 各ホイール（4本。傷・腐食）</label>
+      <label class="check"><input type="checkbox" data-key="rec-b9"> タイヤの溝（1本代表でも可。4本あるとよい）</label>
+      <label class="check"><input type="checkbox" data-key="rec-b10"> スペアタイヤまたはパンク修理キット</label>
+
+      <h4>C. 傷・サビ・へこみ（1箇所1セット）</h4>
+      <label class="check"><input type="checkbox" data-key="rec-c1"> バンパーの擦り、ドアのへこみ、フェンダーのサビ、ハッチの傷</label>
+      <label class="check"><input type="checkbox" data-key="rec-c2"> マフラーまわり（亮史さんがぶつけ、ディーラー交換済みのはず。現状を必ず撮る）</label>
+      <label class="check"><input type="checkbox" data-key="rec-c3"> 下回り（ライト必須。サイドシル、フレーム付近の穴あきサビ）</label>
+      <label class="check"><input type="checkbox" data-key="rec-c4"> 四万十は海に近い可能性。下回りとリアフェンダー内側を優先</label>
+      <label class="check"><input type="checkbox" data-key="rec-c5"> 雹害・色あせがあればそれ</label>
+
+      <h4>D. 内装</h4>
+      <label class="check"><input type="checkbox" data-key="rec-d1"> 運転席側から見たインパネ全体（ナビ・スイッチ）</label>
+      <label class="check"><input type="checkbox" data-key="rec-d2"> 助手席</label>
+      <label class="check"><input type="checkbox" data-key="rec-d3"> 後席（3列目があれば3列目も。プラドは3列の年式が多い）</label>
+      <label class="check"><input type="checkbox" data-key="rec-d4"> 天井（ヤニ・シミ。後部座席から広く）</label>
+      <label class="check"><input type="checkbox" data-key="rec-d5"> 荷室（荷物は出せる範囲で出す）</label>
+      <label class="check"><input type="checkbox" data-key="rec-d6"> シートの破れ・汚れのアップ</label>
+      <label class="check"><input type="checkbox" data-key="rec-d7"> におい（写真にならないのでメモ: 喫煙 / ペット / なし）</label>
+
+      <h4>E. エンジン・電装</h4>
+      <label class="check"><input type="checkbox" data-key="rec-e1"> ボンネットを開けたエンジンルーム（全体）</label>
+      <label class="check"><input type="checkbox" data-key="rec-e2"> エンジンONのメーター。警告灯が消えるか、残るか</label>
+      <label class="check"><input type="checkbox" data-key="rec-e3"> 始動の様子が不安なら動画10秒</label>
+      <label class="check"><input type="checkbox" data-key="rec-e4"> エアコンの吹き出し（冷えるかメモ）</label>
+      <label class="check"><input type="checkbox" data-key="rec-e5"> 4WD切り替えが分かればスイッチ位置の写真</label>
+
+      <h4>F. 装備（加点材料）</h4>
+      <label class="check"><input type="checkbox" data-key="rec-f1"> ナビ画面（地図が出る状態）</label>
+      <label class="check"><input type="checkbox" data-key="rec-f2"> バックカメラ映像（シフトR）</label>
+      <label class="check"><input type="checkbox" data-key="rec-f3"> 純正かどうか分かるロゴ</label>
+      <label class="check"><input type="checkbox" data-key="rec-f4"> ドライブレコーダー、キャリア、ヒッチ、ウィンチ等があればそれ</label>
+
+      <h4>G. 鍵と付属</h4>
+      <label class="check"><input type="checkbox" data-key="rec-g1"> キー全部（スマートキーの数）</label>
+      <label class="check"><input type="checkbox" data-key="rec-g2"> 取説・記録簿が並んだ写真1枚</label>
+
+      <h4>H. 生活側（売却判断用。業者には出さない）</h4>
+      <label class="check"><input type="checkbox" data-key="rec-h1"> 軽の車検証1枚</label>
+      <label class="check"><input type="checkbox" data-key="rec-h2"> 実印・保険証券の「場所」メモ（現物は持って帰らない）</label>
+
+      <h3>6-3. 撮り方のコツ</h3>
+      <h4>外装</h4>
+      <ul>
+        <li>車の長い辺が画面に収まる位置まで下がる。ドア2枚だけ写すと査定しにくい。</li>
+        <li>地面が見える程度に含める（車高とサビの参考）。</li>
+        <li>曇りか朝夕が楽。真夏の正午は白飛びしやすい。9月下旬の四万十なら午前が無難。</li>
+      </ul>
+      <h4>メーター</h4>
+      <ul>
+        <li>エンジンをかけて10秒待ってから撮る（警告灯の自己診断が終わる）。</li>
+        <li>トリップではなくオドメーター（累計）。万kmの桁を読み違えない。</li>
+      </ul>
+      <h4>車検証</h4>
+      <ul>
+        <li>机の上、影が乗らないように。ピンぼけしたら撮り直す。</li>
+        <li>個人情報は家族アルバムに残してよい。業者提出時はサイトの指示に従う。カチエックス等は「個人情報はサイト側で処理する」と案内している。</li>
+        <li>自分で隠すなら、所有者住所・氏名を隠し、年式・型式・車検・燃料・定員は残す。</li>
+        <li>車台番号はサイト入力で求められることがある。チャットには貼らない。</li>
+      </ul>
+      <h4>傷</h4>
+      <ul>
+        <li>「5円玉程度のサビ」でも撮る。後から減額されるより、先に織り込んでもらう。</li>
+        <li>マフラー交換は修復歴（フレーム修正）ではなく部品交換の話。記録簿と現状写真で区別する。</li>
+      </ul>
+      <h4>下回り</h4>
+      <ul>
+        <li>かがんでライトを当てる。スマホを車の下に無理に入れない。</li>
+        <li>穴あき・剥離があればそれが本命写真。きれいなら「問題なさそう」と1枚でよい。</li>
+      </ul>
+
+      <h3>6-4. チャット用に書き写してよい項目（現地の夜にメモ）</h3>
+      <ul>
+        <li>初度登録年月</li>
+        <li>型式（例: TRJ150W の種類。車台番号は不要）</li>
+        <li>車検満了年月</li>
+        <li>燃料（ガソリン / ディーゼル）</li>
+        <li>走行距離（万km）</li>
+        <li>色、定員、駆動が分かれば</li>
+        <li>所有者名が父親か（氏名は「父親」とだけ残す）</li>
+        <li>父親の温度感（売りたい / 迷い / 触れるな）</li>
+        <li>軽の運転者</li>
+        <li>傷の要約（例: 右リアにサビ、マフラー交換歴あり）</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-7">
+      <h2>7. オンライン査定サイト — どこが、どう案内するか</h2>
+      <h3>使い分け（今回の方針に合わせた順）</h3>
+      <ul>
+        <li><strong>段階A</strong> 個人情報なしで相場の幅を見る（第1段の夜〜帰京直後の本命）</li>
+        <li><strong>段階B</strong> 写真または車検証情報で概算額が出る（亮史さんの連絡先のみ、1〜2サービス）</li>
+        <li><strong>段階C</strong> 一括で多数の店に個人情報を流す（今回は使わない）</li>
+        <li><strong>段階D</strong> 実車を見せる（第2段）</li>
+      </ul>
+      <p>電話が増えても高く売れればよい、という回答はある。ただし連絡先は亮史さんだけ、両親の番号は出さない、一括の連打はしない、は維持する。</p>
+
+      <h3>7-1. 段階A. 相場を自分で見る（申込なし）</h3>
+      <h4>グーネット（中古車検索）</h4>
+      <p>URL: <a class="url" href="https://www.goo-net.com/">https://www.goo-net.com/</a><br>
+      案内の型: 売りたい車の買取額ではなく、今売られている中古車の店頭価格を見る。</p>
+      <ol class="steps">
+        <li>「ランドクルーザープラド」で検索</li>
+        <li>年式・走行距離・燃料・地域を絞る</li>
+        <li>台数、下限、中央あたりをメモ</li>
+      </ol>
+      <p>出るもの: 店頭の売り希望。買取額ではない。電話: 来ない。向く理由: 200万希望が現実的かの第一判断になる。</p>
+
+      <h4>カーセンサー（中古車検索）</h4>
+      <p>URL: <a class="url" href="https://www.carsensor.net/">https://www.carsensor.net/</a><br>
+      案内の型: グーネットと同じく在庫検索。絞り込みが細かい。手順はグーネットと同じ。両方見て差を見る。</p>
+
+      <h4>ズバット車買取の相場シミュレーション</h4>
+      <p>URL: <a class="url" href="https://www.zba.jp/car-kaitori/satei-souba/">https://www.zba.jp/car-kaitori/satei-souba/</a><br>
+      案内の型: メーカー・車種・年式・走行距離を選ぶと、独自算出の査定相場と先数か月の予測が出る。個人情報は不要、と案内されている。<br>
+      出るもの: 概算の買取相場。状態は見ないので幅がある。電話: シミュレーションだけでは来ない。その下の「一括査定申込」は別物なので押さない。</p>
+
+      <div class="box warn">
+        <h3>段階Aの記録（3つだけ）</h3>
+        <ul>
+          <li>似た車の店頭価格の下限</li>
+          <li>中央あたり</li>
+          <li>台数</li>
+        </ul>
+        <p>向き合い方（09-02版と同じ）</p>
+        <ul>
+          <li>店頭の中央が300万超なら、買取200万は狙える側</li>
+          <li>店頭の中央が150万前後なら、買取200万は難しい。50〜120万を主戦場にする</li>
+          <li>店頭が50万前後なら、最低50万の達成自体を査定次第で見直す</li>
+        </ul>
+      </div>
+
+      <h3>7-2. 段階B. 概算の買取額を取る（少数。亮史さん名義）</h3>
+      <h4>共通の入力</h4>
+      <ul>
+        <li>メーカー: トヨタ / 車名: ランドクルーザープラド</li>
+        <li>年式、走行距離、色、修復歴の有無、郵便番号（四万十市で可。番地の細かい表記は出さない）</li>
+        <li>氏名・携帯・メールは亮史さん</li>
+        <li>売却希望時期: 「2か月以内」や「まだ決めていない」など、急がない旨が選べればそちら</li>
+        <li>備考例: 「所有者は父。連絡は息子のみ。今回は概算のみ。実車査定は別途相談。父母へ電話しないでください」</li>
+      </ul>
+      <h4>共通の注意</h4>
+      <ul>
+        <li>オンラインの金額は「実車前の目安」。最終額は実車で変わる。</li>
+        <li>傷を隠すと、後で減額やキャンセルになる。</li>
+        <li>出したら「家族で相談します」で止めてよい。売らなくてよい。</li>
+      </ul>
+
+      <h4>(1) MOTA車買取</h4>
+      <p>URL: <a class="url" href="https://autoc-one.jp/ullo/">https://autoc-one.jp/ullo/</a></p>
+      <ol class="steps">
+        <li>公式からメーカー・車種・年式・グレード・色・走行距離・売却時期・郵便番号・氏名・携帯・メールを入力（案内上は数十秒〜数分）</li>
+        <li>この時点で加盟店に渡るのは車両情報。氏名・電話はまだ非開示、と案内されている</li>
+        <li>マイページで任意項目（写真最大6枚、装備、禁煙、傷）を追加できる。写真は任意だが精度が上がる</li>
+        <li>最大20社がWeb上で入札</li>
+        <li>開示の目安: 14:59までの申込 → 当日18:00、15:00以降 → 翌日12:00（公式・解説でこう案内）</li>
+        <li>連絡が来るのは査定額の上位3社まで。一斉電話ラッシュを避ける設計</li>
+        <li>上位3社は実車査定の日程を電話で聞いてくる。ここで「今回は概算確認のみ。実車は後日」と言える</li>
+        <li>実車 → 最終額 → 売る/やめる</li>
+      </ol>
+      <p>写真の案内（任意、最大6枚の例）: 正面 / サイド / 後方 / ハンドルとメーター / 傷など2枚<br>
+      向く点: 金額の幅がWebで見える。電話は最大3社。今回の「だいたいの相場」に近い。<br>
+      向かない点: 実車前提のサービス。概算を見たあと営業電話は来る。<br>
+      今回の使い方: 写真が揃ってから1回だけ。両親の番号は出さない。実車は第2段。</p>
+
+      <h4>(2) グーネット買取</h4>
+      <p>URL: <a class="url" href="https://www.goo-net.com/kaitori/">https://www.goo-net.com/kaitori/</a></p>
+      <ol class="steps">
+        <li>愛車情報と写真を登録。「車検証と車の写真があるとスムーズ」と公式が案内</li>
+        <li>型式・車台番号まで入れると精度が上がると案内（車台番号はサイト内のみ。チャットに貼らない）</li>
+        <li>買取店がオファー。独自ランキングで最大20社表示</li>
+        <li>上位3社から実車査定のアポイント連絡。他店への追加リクエストも可</li>
+        <li>実車で最終額。支払いを「あんしん決済」（事務局が一時預かる）か店直接か選べると案内</li>
+      </ol>
+      <p>向く点: MOTAに近く、写真を公式が推奨。上位3社に電話が絞られる。<br>
+      今回の使い方: MOTAと両方は出さなくてよい。どちらか1つ。グーネット在庫検索（段階A）とは別サービス。</p>
+
+      <h4>(3) カチエックス（KATIX）</h4>
+      <p>URL: <a class="url" href="https://car.katix.co.jp/">https://car.katix.co.jp/</a></p>
+      <ol class="steps">
+        <li>メーカー・年式・走行距離等で推定売却額がすぐ出ると案内（目安）</li>
+        <li>愛車の写真と基本情報を登録。スタッフ確認後に入札開始</li>
+        <li>必須写真は計8枚（外装・内装・車検証）。撮影ガイドあり。右前方・左前方・右後方・左後方・メーター・運転席・インパネ・車検証が中心。後席・天井・下回り・傷は追加すると入札が増えやすい、と案内</li>
+        <li>最大おおよそ20社前後が入札。やり取りは最高額の1社が基本、と案内</li>
+        <li>売却確定までは買取店からの電話なし。カチエックスとのメール・SMS中心</li>
+        <li>納得したら引渡日を調整。入金はカチエックス経由の方式あり（一部店は対象外）</li>
+        <li>登録内容と大きな差がなければ引渡時の減額交渉を禁止している、と案内（状態が写真と違うと契約解除の可能性はある）</li>
+      </ol>
+      <p>電子車検証: 「自動車検査証記録事項」を登録するよう案内。<br>
+      向く点: 今回の「写真で相場をつかむ」「両親に電話をかけない」に最も近い。<br>
+      向かない点: 地方・年式によっては入札が薄いことがある。最終的には引取の段取りが要る。<br>
+      今回の使い方: 段階Bの第一候補にしてよい。売却確定までは進めなくてよい。入札額を家族相談の材料にする。</p>
+
+      <h4>(4) ガリバー（オンライン無料査定）</h4>
+      <p>URL: <a class="url" href="https://221616.com/satei/services/online/">https://221616.com/satei/services/online/</a></p>
+      <ol class="steps">
+        <li>Webで車種・年式・走行距離など必須項目を入力</li>
+        <li>24時間以内に電話で概算を連絡、と公式案内</li>
+        <li>電話（0120-22-1616）でも、オペレーターに車種・年式・距離を伝えて概算</li>
+        <li>その後、店舗または出張の実車査定へ誘導されるのが通常</li>
+      </ol>
+      <p>別系統: ガリバーオート等のアプリは、写真査定 / 車検証QR / 入力査定を選ぶ案内がある。<br>
+      向く点: 大手の目安が欲しいとき。向かない点: 結果が電話前提。1社の概算なので比較にならない。<br>
+      今回の使い方: 必須ではない。出すなら亮史さんの番号のみ。カチエックスかMOTAの後で足りなければ。</p>
+
+      <h4>(5) カーネクスト</h4>
+      <p>URL: <a class="url" href="https://carnext.jp/service/flow/">https://carnext.jp/service/flow/</a></p>
+      <ol class="steps">
+        <li>訪問の実車査定は行わない、と公式が明言</li>
+        <li>WEBフォームまたは電話。車種・年式・走行距離・内外装・修復歴を聞いて査定</li>
+        <li>電話ならその場で金額提示、と案内</li>
+        <li>納得したら契約 → 自宅等へ引取（車検切れ・不動車もレッカー無料と案内）</li>
+        <li>名義変更・抹消は代行。入金は書類確認後おおよそ1〜2週間</li>
+        <li>成約後キャンセルは手数料3万円の場合あり、と注記</li>
+      </ol>
+      <p>向く点: 実車を見せずに話を進めたい第2段以降の候補。不動車でも受けやすい。<br>
+      向かない点: 比較入札ではない。1社の提示。成約後のキャンセルに費用。<br>
+      今回の使い方: 第1段では出さない。「相場をつかむ」用途より「引取まで任せたい」用途。年式が古く入札が付かないときの第2段候補。</p>
+
+      <h3>7-3. 段階C. 一括査定（今回は使わない）</h3>
+      <div class="banner danger"><strong>使わない。</strong>店を多く選ぶと電話が集中する。両親の生活に着信が混線しやすい。</div>
+      <h4>カーセンサー簡単ネット車査定（一括）</h4>
+      <p>URL: <a class="url" href="https://kaitori.carsensor.net/">https://kaitori.carsensor.net/</a></p>
+      <ol class="steps">
+        <li>メーカー・車種・グレード・年式・走行距離を入力（不明ならおおよそで可、と案内）</li>
+        <li>車の状態・色・事故歴など。任意で詳細</li>
+        <li>氏名・郵便番号・メール等</li>
+        <li>査定を依頼する買取店を自分で選ぶ（最大数十社規模の案内）</li>
+        <li>申込直後から選んだ店から電話が来て、実車の日程調整</li>
+        <li>実車後に金額比較</li>
+      </ol>
+      <p>別枠: 「オークション」を選ぶと電話対応1社・多数店が入札、という案内もある。備考欄に「メール希望」と書いても、店側が電話してくることは残る。</p>
+
+      <h4>ズバット車買取比較（一括申込の側）</h4>
+      <p>URL: <a class="url" href="https://www.zba.jp/car-kaitori/">https://www.zba.jp/car-kaitori/</a></p>
+      <ol>
+        <li>相場シミュレーション（段階A）と、一括査定申込は別</li>
+        <li>一括に進むと選択した買取店から連絡 → 実車 → 比較</li>
+        <li>申込直後の複数電話が想定されている</li>
+      </ol>
+      <p>使い方: 相場ページだけ使う。一括申込のボタンは押さない。<br>
+      その他の「最大10社に一括」系（ナビクル等）も仕組みは近い。今回は手を出さない。</p>
+
+      <h3>7-4. 段階D. 実車を見せるサービス（第2段）</h3>
+      <h4>ユーカーパック</h4>
+      <p>URL: <a class="url" href="https://ucarpac.com/contents/guide/">https://ucarpac.com/contents/guide/</a></p>
+      <ol class="steps">
+        <li>車情報と連絡先で無料査定申込（電話0120-020-050でも可）</li>
+        <li>連絡はユーカーパックからのみ、と案内</li>
+        <li>自宅または提携店、あるいは自分で査定、のいずれか。データ化して全国多数店のオークションへ</li>
+        <li>出品担当と「売切価格」（これを超えたら売る約束の下限）を相談</li>
+        <li>オークション後に結果連絡。売切価格超えなら承認、届かなければ交渉</li>
+        <li>成立後に書類送付、引取、入金は引渡と書類確認後3営業日以内、と案内</li>
+        <li>査定保証は最大60日、引渡は売却決定後おおよそ10日前後、売却時期が2か月以上先なら査定を先送り、と案内</li>
+      </ol>
+      <p>向く点: 窓口1社。価格競争はオークション側。向かない点: 第1段の「写真だけで相場」ではない。実査定が本体。四万十が対応エリアか、申込時に確認が要る。今回の使い方: オンラインで幅を見たあと、実車フェーズの候補。</p>
+
+      <h4>地元ディーラー（高知トヨタ中村店など）</h4>
+      <p>案内の型: 電話か来店予約 → 現車を見る → 下取りまたは買取の提示。オンラインの入札ではない。プラドの整備履歴があるなら、記録簿と相性がよい。第1段では予約しない。第2段で「写真相場」と比較してから。</p>
+
+      <h3>7-5. サイト比較（今回用の早見）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>名前</th><th>査定の出し方</th><th>電話の出方</th><th>第1段での位置</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>グーネット検索</td><td>在庫の店頭価格を自分で見る</td><td>なし</td><td>本命（段階A）</td></tr>
+            <tr><td>カーセンサー検索</td><td>同上</td><td>なし</td><td>本命（段階A）</td></tr>
+            <tr><td>ズバット相場</td><td>年式距離から概算</td><td>なし（一括は別）</td><td>補助（段階A）</td></tr>
+            <tr><td>カチエックス</td><td>写真8枚＋情報で入札</td><td>売却まで店からなし</td><td>段階Bの第一候補</td></tr>
+            <tr><td>MOTA</td><td>情報（＋任意写真）で入札</td><td>上位3社</td><td>段階Bの第二候補</td></tr>
+            <tr><td>グーネット買取</td><td>情報＋写真でオファー</td><td>上位3社</td><td>MOTAと択一</td></tr>
+            <tr><td>ガリバーオンライン</td><td>入力後に概算</td><td>24時間以内に電話</td><td>必須ではない</td></tr>
+            <tr><td>カーネクスト</td><td>電話/Webで実車なし査定</td><td>自社から</td><td>第2段候補</td></tr>
+            <tr class="muted-row"><td>カーセンサー一括</td><td>選んだ全店が実車前提</td><td>申込直後から多い</td><td>使わない</td></tr>
+            <tr class="muted-row"><td>ズバット一括</td><td>選んだ店が実車前提</td><td>申込直後から多い</td><td>使わない</td></tr>
+            <tr><td>ユーカーパック</td><td>実車データでオークション</td><td>窓口1社</td><td>第2段候補</td></tr>
+            <tr><td>地元トヨタ</td><td>現車</td><td>予約した店のみ</td><td>第2段（例外で現地1件）</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7-6. 推奨する実作業順（写真が揃ったあと）</h3>
+      <ol class="steps">
+        <li>グーネットとカーセンサーで在庫を30分見る。店頭の下限と中央をメモ。</li>
+        <li>ズバット相場を1回だけ見る。個人情報は入れない。</li>
+        <li>カチエックスに写真を載せて入札額の幅を見る。連絡先は亮史さん。売却は確定しない。</li>
+        <li>幅が広すぎる、または入札が少ないときだけ、MOTAかグーネット買取を1つ追加。</li>
+        <li>上位店から実車の日程を聞かれたら「家族相談のあと、息子から連絡します」で止める。</li>
+        <li>一括査定（カーセンサー一括・ズバット一括）は開かない。</li>
+        <li>実車は第2段。亮史さんの再訪か、出張査定。両親だけで対応させない。</li>
+      </ol>
+    </section>
+
+    <section class="card" id="sec-8">
+      <h2>8. 第1段（9/21-24）現地の進め方</h2>
+      <h3>最優先の順番</h3>
+      <ol class="steps">
+        <li>父親の今の気持ち</li>
+        <li>売ったあと、誰が軽を運転するか</li>
+        <li>紙の所在と写真撮影</li>
+        <li>（時間が余って、1と2が大丈夫なら）実査定1件は「できたらよい」</li>
+        <li>美樹さんへ共有</li>
+      </ol>
+      <p>契約はしない。オンライン査定の申込は夜か帰京後。</p>
+
+      <h3>8-1. 到着日 9/21（月）午後〜夜</h3>
+      <h4>やること</h4>
+      <ul>
+        <li>到着・食事・体調。車の話は夕食前後の短い時間でよい</li>
+        <li>聞くこと（詰問しない、メモは後で）
+          <ul>
+            <li>A. 今もプラドは売りたいか。迷いがあるか</li>
+            <li>B. 自分でディーラーに行く気はあるか（負担なら来てもらう／亮史が行く）</li>
+            <li>C. 軽は誰がいつ乗っているか。父親は今も運転しているか</li>
+            <li>D. 母親の買い物・銀行・近所の病院はどうしているか</li>
+          </ul>
+        </li>
+        <li>前向きなら「明日、書類の場所と写真だけ撮らせてほしい」とだけ言う</li>
+        <li>その場で「業者を呼ぶ」とは言わない</li>
+        <li>体力があれば、車検証入れだけ探して写真1枚。本撮影は22日でよい</li>
+        <li>後ろ向き・疲れ・不機嫌なら、その日は車に触れない</li>
+      </ul>
+      <h4>やらないこと</h4>
+      <ul>
+        <li>金額の話（200万と言うと、それが条件になる）</li>
+        <li>業者を呼ぶ、一括査定に申し込む</li>
+        <li>家族会議を長くする</li>
+      </ul>
+      <p>月曜は地元トヨタが休みの可能性が高い。実査定を入れなくてよい日。</p>
+
+      <h3>8-2. 本命 9/22（火） 書類と撮影</h3>
+      <p><strong>午前:</strong> 目標90分。父親は見ていなくても、所在だけ分かれば可。</p>
+      <ol>
+        <li>車検証（原本。電子なら記録事項も）</li>
+        <li>メーター</li>
+        <li>外装 斜め4 + 前後左右</li>
+        <li>傷・へこみ・サビ。マフラーまわり。下回り</li>
+        <li>室内、シート、荷室、天井、においメモ</li>
+        <li>エンジンルーム、警告灯</li>
+        <li>ナビ・バックカメラ</li>
+        <li>スペアキー、記録簿、取説、自賠責、リサイクル券、保険証券</li>
+        <li>見つからない紙は「場所を父親に聞く」。無ければメモして次へ</li>
+      </ol>
+      <p><strong>午後:</strong></p>
+      <ul>
+        <li>撮り残しの回収、写真のピンぼけ確認（その日のうちに撮り直す）</li>
+        <li>チャット用の数字メモ（6-4）</li>
+        <li>実査定する／しないは「全部そろった例外」だけ
+          <ul>
+            <li>する条件: 父親が「見てもらってよい」／亮史さん同席／母親の場が荒れていない／午前の写真が終わっている</li>
+            <li>しない条件: 疲れた、気が変わった、車検証が出てこない、エンジンがかからない</li>
+          </ul>
+        </li>
+        <li>するなら1件が上限。電話するとき「買取の査定だけ。今日は契約しない。連絡は息子」</li>
+        <li>しなくても成功。</li>
+      </ul>
+
+      <h3>8-3. 9/23（水） 予備と生活確認。夜から相場を見始めてよい</h3>
+      <ul>
+        <li>22日の撮り残しを午前に回収</li>
+        <li>軽の車検証も写真1枚</li>
+        <li>畑の確認（売る話は深入りしない）</li>
+        <li>母親の日常: 買い物、タクシー、電動自転車</li>
+        <li>夜、美樹さんへ写真と「父親の温度感」を共有</li>
+        <li>時間があれば段階A（グーネット・カーセンサー検索）だけやる。一括申込はしない</li>
+        <li>カチエックス等の段階Bは、写真の整理が終わってから。23日夜でも帰京後でも可</li>
+      </ul>
+
+      <h3>8-4. 9/24（木） 出発前</h3>
+      <ul>
+        <li>車検証・スペアキー・実印・保険証券の「場所」をメモ（実印は持って帰らない）</li>
+        <li>アルバムが全部端末に入っているか。クラウドか家族LINEに退避</li>
+        <li>父親に「急がない。金額はみんなで見る」と一言</li>
+        <li>母親には「電話が来ることはない。亮史がやる」と一言</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-9">
+      <h2>9. 現地で必ず確認する「売ったあとの移動」</h2>
+      <p>母親は免許がない。軽が残っても、運転できる人がいなければ「家に車がある」だけになる。</p>
+      <h3>確認項目</h3>
+      <label class="check"><input type="checkbox" data-key="move-1"> 今、軽を実際に運転しているのは誰か</label>
+      <label class="check"><input type="checkbox" data-key="move-2"> 父親は、プラドを売ったあと軽に乗り換えて乗るか</label>
+      <label class="check"><input type="checkbox" data-key="move-3"> 家族として、父親の運転を続ける判断か、やめたい判断か</label>
+      <label class="check"><input type="checkbox" data-key="move-4"> 母親の買い物・役所・銀行の現実の手段</label>
+      <label class="check"><input type="checkbox" data-key="move-5"> 月1の高知大学病院（中村駅→高知駅→タクシー）は、プラド無しでも今と同じか</label>
+      <label class="check"><input type="checkbox" data-key="move-6"> 急病時は市民病院へ救急、でよいか</label>
+      <label class="check"><input type="checkbox" data-key="move-7"> 電動自転車は誰が、どこまで使う案か（夜間・雨・坂）</label>
+      <label class="check"><input type="checkbox" data-key="move-8"> タクシーが電話で来るか、アプリか、予約が必要か</label>
+      <h3>判断の目安</h3>
+      <ul>
+        <li>月1の高知通院は、すでに汽車とタクシー。プラド必須ではない可能性が高い</li>
+        <li>近所の用事がタクシーと子ども帰省で回るなら、プラド売却を止めない</li>
+        <li>「父親が軽を運転し続ける」が条件なら、それは売却とは別の安全の話として残す</li>
+        <li>新しい車を買う判断は、今回の売却と切り離す。現地で急いで買わない</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-10">
+      <h2>10. 第2段（帰京後）相場の調べ方と実査定への渡し方</h2>
+      <h3>10-1. 自分で相場を見る（段階A、30〜60分）</h3>
+      <p>第7章のグーネット・カーセンサー・ズバット相場。</p>
+
+      <h3>10-2. 写真査定（段階B、亮史さんの連絡先のみ）</h3>
+      <ol>
+        <li>カチエックス</li>
+        <li>足りなければ MOTA または グーネット買取 のどちらか1つ</li>
+        <li>車両所在は高知県四万十市でよい</li>
+        <li>両親の番号・番地の細かい表記は出さない（集荷が必要になる段階まで）</li>
+      </ol>
+      <p>やらない: 一括査定サイトに全部入力して何社にも同時流通</p>
+
+      <h3>10-3. 比較表（家族相談用。金額は概算でよい）</h3>
+      <p>店名またはサイト | 提示額 | 有効期限 | 引取方法 | 名義変更代行 | 手数料 | 入金 | 連絡の質</p>
+      <ul>
+        <li>在庫から見た店頭レンジ（参考）</li>
+        <li>カチエックス入札</li>
+        <li>MOTAまたはグーネット買取</li>
+        <li>（例外で現地実査定した場合）その店</li>
+      </ul>
+      <p>見る順番</p>
+      <ol>
+        <li>手残り（振込額。手数料差引後）</li>
+        <li>父親が現地に行かなくて済むか</li>
+        <li>引取に亮史さんの再訪が必要か（半年に1回なら可）</li>
+        <li>説明が雑でないか</li>
+      </ol>
+
+      <h3>10-4. 実査定（次フェーズ）の入れ方</h3>
+      <ul>
+        <li>オンラインの幅を家族が共有してから</li>
+        <li>亮史さん同席、または出張で亮史さんが電話に出られるとき</li>
+        <li>候補: 地元トヨタ、ユーカーパック、段階Bで上位だった店の出張</li>
+        <li>その場で契約しない。有効期限を聞いて持ち帰る</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-11">
+      <h2>11. 業者比較の観点（実査定・契約時）</h2>
+      <div class="grid-2">
+        <div class="box no">
+          <h3>金額以外で落とす条件</h3>
+          <ul>
+            <li>その場契約を強く急かす</li>
+            <li>手数料が後出し</li>
+            <li>両親に直接電話する</li>
+            <li>「修復歴あり」とだけ言って内訳を見せない</li>
+            <li>振込先を亮史さん名義に誘導する（今回は夫婦の生活用口座）</li>
+          </ul>
+        </div>
+        <div class="box ok">
+          <h3>金額以外で加点</h3>
+          <ul>
+            <li>出張引取ができる</li>
+            <li>名義変更・抹消を店がやる</li>
+            <li>委任状は店の用紙、押印は自宅で可</li>
+            <li>提示額が何日有効か書いてくれる</li>
+            <li>マフラー交換を減点理由にするなら、記録簿を見て判断してくれる</li>
+          </ul>
+        </div>
+      </div>
+      <p>個人売買（知り合い・ネット）は、今回は第一候補にしない。</p>
+    </section>
+
+    <section class="card" id="sec-12">
+      <h2>12. 家族相談の進め方</h2>
+      <p>相談メンツ: 父親、母親、亮史さん、美樹さん（配偶者は必要なら後から共有）<br>
+      媒体: 現地後のテレビ電話か、亮史さんが資料を見せながら電話。短く30分。</p>
+      <h3>相談前に亮史さんが用意するもの</h3>
+      <ul>
+        <li>車の年式・距離・車検（1行）</li>
+        <li>比較表</li>
+        <li>「手残りが○万なら売ってよい」の案（決め打ちしない）</li>
+        <li>売ったあとの移動の確認結果</li>
+      </ul>
+      <h3>相談で決めること（この3つだけ）</h3>
+      <ol>
+        <li>今も売るか（延期するか）</li>
+        <li>これ以下なら売らない額</li>
+        <li>どの店に、亮史さんが返事するか（実査定に進むか）</li>
+      </ol>
+      <h3>話し方</h3>
+      <ul>
+        <li>最初に希望200万を繰り返さない</li>
+        <li>「店頭価格」と「手元に入る額」を混ぜない</li>
+        <li>母親には「来店も電話も不要。ハンコだけ」と先に言う</li>
+        <li>父親の気が変わる余地を残す。「今週決めなくてよい」</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-13">
+      <h2>13. 第3段 売却実行（店が決まったあと）</h2>
+      <h3>13-1. 店に依頼する進め方</h3>
+      <ul>
+        <li>契約書の下書きまたは必要書類リストを先に送ってもらう</li>
+        <li>父親は自宅で署名・実印。来店は原則なし</li>
+        <li>亮史さんが書類のやり取り窓口</li>
+        <li>車の引取日: 出張引取が理想。無理なら、亮史さんか美樹さんの帰省に合わせる</li>
+        <li>入金: 両親の生活用口座。亮史さん立て替えはしない</li>
+      </ul>
+      <h3>13-2. 印鑑証明</h3>
+      <ul>
+        <li>契約が現実になってから、四万十市で父親分を取得</li>
+        <li>亮史さんが同行できる日か、母親が役所に慣れているならその方法を現地で確認しておく</li>
+      </ul>
+      <h3>13-3. 委任状</h3>
+      <ul>
+        <li>店の指定用紙を使う</li>
+        <li>押すのは父親の実印</li>
+        <li>代金受領まで委任する必要はない。入金は父親側口座へ</li>
+      </ul>
+      <h3>13-4. 入金確認後</h3>
+      <ul>
+        <li>任意保険の解約</li>
+        <li>自動車税の月割は買取店処理が多い。還付があるなら誰の口座か確認</li>
+        <li>ナビ・ETCの個人情報消去</li>
+        <li>スペアキーを渡し忘れない</li>
+      </ul>
+    </section>
+
+    <section class="card" id="sec-14">
+      <h2>14. 個人情報の扱い</h2>
+      <div class="grid-2">
+        <div class="box ok">
+          <h3>このプロジェクトのチャットに出してよい</h3>
+          <ul>
+            <li>年式、型式の記号、走行距離、車検年月、燃料、グレード、傷の有無</li>
+            <li>「所有者は父親」「四万十市」</li>
+          </ul>
+        </div>
+        <div class="box no">
+          <h3>出さない</h3>
+          <ul>
+            <li>車台番号の全文</li>
+            <li>印鑑証明・マイナンバー・口座番号</li>
+            <li>両親の電話番号</li>
+            <li>病状の詳細な経過（方針に必要な範囲以上）</li>
+          </ul>
+        </div>
+      </div>
+      <p>写真は家族のLINEと亮史さんの端末に置く。業者提出時は必要枚数だけ。</p>
+    </section>
+
+    <section class="card" id="sec-15">
+      <h2>15. うまくいかないときの分岐</h2>
+      <ul>
+        <li><strong>父親が現地で「やっぱり売らない」</strong> → 写真だけ許可が出れば撮って帰る。無理なら次の帰省。失敗ではない。</li>
+        <li><strong>父親は売りたいが、母親が面倒がって止まる</strong> → 「電話も来店もなし、ハンコだけ」を先に約束。情報収集は亮史さん単独で。</li>
+        <li><strong>査定額が50万を割る</strong> → 売らない、ではなく家族相談。維持費が毎年かかるなら、安くても売る判断はあり得る。車検が近いと、通さずに売る方が負担は小さいことが多い。</li>
+        <li><strong>現地で実査定できなかった</strong> → 写真が揃っていれば成功。それが今回の目標。</li>
+        <li><strong>エンジンがかからない・バッテリー上がり</strong> → 無理に動かさない。記録して、オンラインでは「不動の可能性」と伝える。カーネクスト等の第2段候補。</li>
+        <li><strong>名義が父親でない、ローン会社が所有者</strong> → 契約せず持ち帰る。所有権解除が先。</li>
+      </ul>
+    </section>
+
+    <section class="card" id="app-a">
+      <h2>付録A. 現地タイムボックス（目安）</h2>
+      <div class="day"><strong>9/21 月</strong> 到着。夜20分だけ温度感と軽の運転者。車検証入れの場所だけ分かれば十分</div>
+      <div class="day"><strong>9/22 火</strong> 9:30-11:00 書類と撮影（本命）<br>11:00-12:00 ピンぼけ確認、数字メモ<br>午後　撮り残し。実査定は例外のときだけ<br>夜　畑・片付けは体力次第</div>
+      <div class="day"><strong>9/23 水</strong> 撮り残し、軽の車検証、母親の移動、畑確認、片付け<br>夜　段階Aの相場検索可。一括申込はしない</div>
+      <div class="day"><strong>9/24 木</strong> 実印と書類の場所メモ、アルバム退避、出発</div>
+    </section>
+
+    <section class="card" id="app-b">
+      <h2>付録B. 現地で探す紙のチェック（場所メモ欄）</h2>
+      <h3>オンライン査定用に写真</h3>
+      <label class="check"><input type="checkbox" data-key="paper-1"> 車検証（A4 / 電子） <input class="place" data-key="place-1" placeholder="場所:"></label>
+      <label class="check"><input type="checkbox" data-key="paper-2"> 自動車検査証記録事項 <input class="place" data-key="place-2" placeholder="場所:"> ※電子車検証のとき</label>
+      <label class="check"><input type="checkbox" data-key="paper-3"> 自賠責 <input class="place" data-key="place-3" placeholder="場所:"></label>
+      <label class="check"><input type="checkbox" data-key="paper-4"> リサイクル券 <input class="place" data-key="place-4" placeholder="場所:"></label>
+      <label class="check"><input type="checkbox" data-key="paper-5"> 記録簿・取説 <input class="place" data-key="place-5" placeholder="場所:"></label>
+      <label class="check"><input type="checkbox" data-key="paper-6"> 任意保険 <input class="place" data-key="place-6" placeholder="場所 / 会社名:"></label>
+      <label class="check"><input type="checkbox" data-key="paper-7"> 納税証明または領収 <input class="place" data-key="place-7" placeholder="場所:"></label>
+
+      <h3>売却時に必要。今は場所だけ</h3>
+      <label class="check"><input type="checkbox" data-key="paper-8"> 実印 <input class="place" data-key="place-8" placeholder="場所:"></label>
+      <label class="check"><input type="checkbox" data-key="paper-9"> 印鑑証明（古いものがあっても取り直す）</label>
+      <label class="check"><input type="checkbox" data-key="paper-10"> スペアキー 本数: <input class="place" data-key="place-10" placeholder="本数"></label>
+      <label class="check"><input type="checkbox" data-key="paper-11"> ローン関係（所有者欄が信販なら）</label>
+
+      <h3>業者提出はしない</h3>
+      <p>口座情報はメモしない。入金段階で店に伝える</p>
+    </section>
+
+    <section class="card" id="app-c">
+      <h2>付録C. 撮影リスト（9/22用・詳細は第6章）</h2>
+      <h3>【必須】</h3>
+      <label class="check"><input type="checkbox" data-key="shot-1"> 車検証（必要な記載が読める距離）</label>
+      <label class="check"><input type="checkbox" data-key="shot-2"> メーターの走行距離（エンジンON）</label>
+      <label class="check"><input type="checkbox" data-key="shot-3"> 外装 右前・左前・右後・左後</label>
+      <label class="check"><input type="checkbox" data-key="shot-4"> 内装 運転席まわり</label>
+      <label class="check"><input type="checkbox" data-key="shot-5"> 警告灯</label>
+      <label class="check"><input type="checkbox" data-key="shot-6"> 車検ステッカー</label>
+      <h3>【推奨】</h3>
+      <label class="check"><input type="checkbox" data-key="shot-7"> 前後左右の真向き、屋根</label>
+      <label class="check"><input type="checkbox" data-key="shot-8"> 傷・へこみ・サビ（1箇所1枚）</label>
+      <label class="check"><input type="checkbox" data-key="shot-9"> マフラーまわり</label>
+      <label class="check"><input type="checkbox" data-key="shot-10"> 下回り</label>
+      <label class="check"><input type="checkbox" data-key="shot-11"> タイヤとホイール</label>
+      <label class="check"><input type="checkbox" data-key="shot-12"> 後席・3列目・荷室・天井</label>
+      <label class="check"><input type="checkbox" data-key="shot-13"> エンジンルーム</label>
+      <label class="check"><input type="checkbox" data-key="shot-14"> ナビ画面、バックカメラ</label>
+      <label class="check"><input type="checkbox" data-key="shot-15"> 記録簿、自賠責、リサイクル券</label>
+      <label class="check"><input type="checkbox" data-key="shot-16"> スペアキー</label>
+      <h3>【生活側】</h3>
+      <label class="check"><input type="checkbox" data-key="shot-17"> 軽の車検証</label>
+      <label class="check"><input type="checkbox" data-key="shot-18"> 実印・保険証券の場所メモ</label>
+    </section>
+
+    <section class="card" id="app-d">
+      <h2>付録D. 実査定になったとき聞くこと（例外・第2段）</h2>
+      <label class="check"><input type="checkbox" data-key="ask-1"> 提示額は税込か、振込額か</label>
+      <label class="check"><input type="checkbox" data-key="ask-2"> 手数料・レッカー・名義変更費用の有無</label>
+      <label class="check"><input type="checkbox" data-key="ask-3"> 金額の有効期限</label>
+      <label class="check"><input type="checkbox" data-key="ask-4"> 修復歴判定か（マフラー交換をどう見たか）</label>
+      <label class="check"><input type="checkbox" data-key="ask-5"> 出張引取の可否と日</label>
+      <label class="check"><input type="checkbox" data-key="ask-6"> 父親の来店が必要か</label>
+      <label class="check"><input type="checkbox" data-key="ask-7"> 委任状は店用紙か</label>
+      <label class="check"><input type="checkbox" data-key="ask-8"> 入金までの日数と口座名義の条件</label>
+      <label class="check"><input type="checkbox" data-key="ask-9"> 連絡は亮史さん限定にできるか</label>
+    </section>
+
+    <section class="card" id="app-e">
+      <h2>付録E. 帰省から戻ったあと、AIに共有すると次が早い情報</h2>
+      <p>次のメッセージでこれだけもらえれば、相場の見方と査定サイトの入力文案に進める。</p>
+      <ul>
+        <li>初度登録年月</li>
+        <li>型式（車台番号は不要）</li>
+        <li>走行距離</li>
+        <li>車検満了年月</li>
+        <li>燃料（ガソリン / ディーゼル）</li>
+        <li>グレードが分かれば</li>
+        <li>父親の温度感（売りたい / 迷い / 触れるな）</li>
+        <li>軽の運転者</li>
+        <li>写真が撮れた範囲（必須だけ / 推奨まで）</li>
+        <li>例外で実査定した場合の店と提示額（店名は出してよい）</li>
+      </ul>
+      <p>以上。</p>
+    </section>
+
+    <footer>元ファイル: 進め方手順書_2026-09-14.txt　／　HTML版: prado-sale-procedure-2026-09-14.html</footer>
+  </main>
+
+  <button type="button" class="to-top" id="to-top" aria-label="先頭へ戻る">↑</button>
+
+  <script>
+    (function () {
+      var panel = document.getElementById("toc-panel");
+      var openBtn = document.getElementById("toc-open");
+      var closeBtn = document.getElementById("toc-close");
+      var storageKey = "prado-sale-procedure-2026-09-14";
+
+      function setOpen(open) {
+        panel.classList.toggle("open", open);
+        panel.hidden = !open;
+        openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) closeBtn.focus();
+      }
+      openBtn.addEventListener("click", function () { setOpen(true); });
+      closeBtn.addEventListener("click", function () { setOpen(false); openBtn.focus(); });
+      panel.addEventListener("click", function (e) {
+        if (e.target === panel) setOpen(false);
+      });
+      panel.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { setOpen(false); });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") setOpen(false);
+      });
+      document.getElementById("to-top").addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(storageKey) || "{}"); } catch (e) { saved = {}; }
+
+      document.querySelectorAll("input[data-key]").forEach(function (el) {
+        var key = el.getAttribute("data-key");
+        if (el.type === "checkbox") {
+          el.checked = !!saved[key];
+          el.addEventListener("change", function () {
+            saved[key] = el.checked;
+            localStorage.setItem(storageKey, JSON.stringify(saved));
+          });
+        } else {
+          el.value = saved[key] || "";
+          el.addEventListener("input", function () {
+            saved[key] = el.value;
+            localStorage.setItem(storageKey, JSON.stringify(saved));
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
