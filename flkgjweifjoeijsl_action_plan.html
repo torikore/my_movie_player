@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>action_plan_921-924.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="2026年9月21日24日-滞在中アクションプラン">2026年9月21日〜24日 滞在中アクションプラン</h1>
+<p>目的は、<strong>高知医大への月1通院は続けつつ</strong>、ご両親の経済的負担と、お母様の精神的・身体的負担を軽くすることです。</p>
+<p>前回までの「幡多けんみん病院へ日常診療を移す」案は、必要な検査機器がないため主軸から外します。代わりに、この滞在で <strong>要介護認定の申請を確実に出し、認定後の在宅支援と、月1通院の移動の再設計につなげる</strong> ことを最優先にします。</p>
+<h2 id="カレンダー上の制約最重要">カレンダー上の制約（最重要）</h2>
+<p>2026年はシルバーウィークです。</p>
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>曜日</th>
+<th>扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9月21日</td>
+<td>月</td>
+<td>敬老の日（祝日）</td>
+</tr>
+<tr>
+<td>9月22日</td>
+<td>火</td>
+<td>国民の休日（祝日）</td>
+</tr>
+<tr>
+<td>9月23日</td>
+<td>水</td>
+<td>秋分の日（祝日）</td>
+</tr>
+<tr>
+<td>9月24日</td>
+<td>木</td>
+<td><strong>この滞在で唯一の平日</strong></td>
+</tr>
+</tbody>
+</table>
+<p>市役所・地域包括支援センター・高知医大がん相談支援センターは、いずれも平日のみです。<strong>申請できる最短日は9月24日（木）</strong> で、滞在中にそれより早く出すことはできません。</p>
+<p>滞在：2026年9月21日（月）昼〜9月24日（木）夜<br>
+開庁：平日 8:30〜17:15<br>
+提出：<strong>24日の開庁直後（8:30）に本庁へ行き、午前中に受理させる</strong></p>
+<p>21〜23日は窓口が閉いているので、ここで書類と「困っていること」を完成させ、24日を提出と相談だけに使います。訪問調査は申請後になるため、<strong>この滞在中の調査同席は原則できません。</strong> 東京へ戻ったあとの電話・ビデオ同席が前提です。</p>
+<hr>
+<h2 id="1-方針の転換何を変えるか">1. 方針の転換（何を変えるか）</h2>
+<table>
+<thead>
+<tr>
+<th>前回の想定</th>
+<th>今回の前提</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日常は幡多けんみん病院、高知医大は節目のみ</td>
+<td><strong>月1は高知医大のまま</strong>（必要な機械が地元にない）</td>
+</tr>
+<tr>
+<td>移動距離を片道20〜30分に縮めて負担を減らす</td>
+<td>距離は縮まらない。<strong>付き添い・移動方法・日常の介護支援</strong>で負担を減らす</td>
+</tr>
+<tr>
+<td>要介護認定＋福祉タクシー券が柱</td>
+<td>認定は柱のまま。ただし四万十市の福祉タクシー券は <strong>75歳・要介護だけでは対象外</strong>（身体障害者手帳の特定等級などが必要）</td>
+</tr>
+</tbody>
+</table>
+<p>いま効くのは次の3本です。</p>
+<ol>
+<li><strong>要介護認定</strong> … ヘルパー・デイ・訪問看護・ショートステイなど、お母様一人に集中している日常介護を分けられるようにする</li>
+<li><strong>月1通院の再設計</strong> … ドア・ツー・ドアの長距離タクシー頼みをやめ、公共交通＋必要区間のみ有料移動、院内の待ち時間短縮、地元での対症療法の分担を検討する</li>
+<li><strong>認知機能の低下を記録し、調査と今後の支援に使う</strong> … 夏は漢字が書けていたのに、いまは平仮名も難しい。これは認定調査で「できる／できない」を正確に伝える材料になる</li>
+</ol>
+<p>介護保険の「通院等乗降介助」は、乗降や移動の介助が保険対象です。<strong>片道100km超のメーター運賃そのものはほぼ自己負担</strong>なので、高知医大までの経済負担をこれだけで大きく減らすことは期待しない方がよいです。</p>
+<hr>
+<h2 id="2-この滞在の成功条件">2. この滞在の成功条件</h2>
+<p>最低ライン（これだけは必ず）</p>
+<ul>
+<li>9月24日の午前中に、四万十市役所本庁で要介護認定申請が <strong>受理</strong> される</li>
+<li>訪問調査の連絡先・流れをメモして持ち帰る</li>
+<li>お母様へ、調査当日に伝える内容と「娘の電話同席」の手順を引き継ぐ</li>
+</ul>
+<p>できれば取りたいライン（24日の午後まで）</p>
+<ul>
+<li>同じ本庁で地域包括支援センターにも立ち寄り、ケアマネ候補と今後の流れを聞く</li>
+<li>リハビリ日記の写しと「いま困っていることリスト」を窓口に渡す（調査員に回してもらう）</li>
+<li>高知医大がん相談支援センターに電話し、月1通院が限界であることと、市から主治医意見書が届く予定であることを伝える</li>
+<li>介護タクシーの往復見積と、汽車＋バスの運賃を控える</li>
+</ul>
+<p>24日は夜出発なので、午前に申請、午後に相談・電話、夕方にお母様へ引き継ぎ、の順が安全です。相談が長引いても、<strong>申請が済んでいない状態で午後に回さない</strong>でください。</p>
+<hr>
+<h2 id="3-出発前9月19日20日にそろえるもの">3. 出発前（9月19日〜20日）にそろえるもの</h2>
+<p>土日は市役所に電話できません。東京側で印刷と下書きまで終わらせて持っていき、現地で氏名・被保険者番号・主治医名を埋めるのが確実です。</p>
+<p>申請に必要なもの（市公式）</p>
+<ul>
+<li>介護保険被保険者証（65歳以上なら届いているはず。見当たらなければ保険証・資格確認書とマイナンバーで窓口相談）</li>
+<li>高知医大の診察券、または主治医の氏名・診療科・病院名・電話番号のメモ<br>
+例：高知大学医学部附属病院／南国市岡豊町小蓮185-1／代表 088-866-5811</li>
+<li>申請する娘の本人確認書類（マイナンバーカードまたは運転免許証）</li>
+<li>お父様のマイナンバーが分かるもの（マイナンバーカード、または通知カード＋身元確認書類）</li>
+<li>印鑑（求められないことも多いが、念のため）</li>
+</ul>
+<p>あると調査・相談が早く進むもの</p>
+<ul>
+<li>リハビリ日記（夏の漢字が書けていた頁と、最近の平仮名が難しい頁。コピー可）</li>
+<li>お薬手帳、退院時の説明書、次回の高知医大受診日</li>
+<li>いまの通院ルートと概算費用（汽車賃、タクシー代、待ち時間、誰が付き添っているか）</li>
+<li>お母様の免許なし・二人暮らしであることのメモ</li>
+</ul>
+<p>申請書は市サイトから事前に印刷・下書きできます。<br>
+<a href="https://www.city.shimanto.lg.jp/soshiki/10/1758.html">要介護認定関係申請書（四万十市）</a></p>
+<p>申請書の「主治医」は、経過を一番知っている <strong>高知医大の担当医</strong> で書いてください。市は申請後に病院へ意見書を取りに行きます。</p>
+<hr>
+<h2 id="4-日別スケジュール">4. 日別スケジュール</h2>
+<h3 id="9月21日月祝昼夜到着後の観察役所は休み">9月21日（月・祝）昼〜夜：到着後の観察。役所は休み</h3>
+<p>到着後すぐは、ご両親の今の生活を自分の目で見てください。24日の窓口で話す具体例がここで決まります。</p>
+<p>見る観点</p>
+<ul>
+<li>食事・薬・トイレ・着替えを、誰がどこまで手伝っているか</li>
+<li>会話のしづらさ、日付や予定の把握、一人で留守番できるか</li>
+<li>日記・字の変化（夏→今）</li>
+<li>お母様が一番つらい時間帯（朝の準備、夜間、通院前後など）</li>
+</ul>
+<p>この日にやること</p>
+<ul>
+<li>介護保険被保険者証・診察券・マイナンバー・お薬手帳の在処を確認する</li>
+<li>申請書の空欄を、家にある書類で埋める</li>
+<li>役所・包括・病院へはかけない（休み）</li>
+</ul>
+<hr>
+<h3 id="9月22日火祝記録を完成させる役所は休み">9月22日（火・祝）：記録を完成させる。役所は休み</h3>
+<p>窓口は使えません。24日に持っていく一式を、ここで完成させます。</p>
+<ul>
+<li>「困っていることリスト」（第5節）をA4一枚に清書する。日記のコピーを添える</li>
+<li>お母様と調査の予行をする。本人が「大丈夫」と言いがちな項目を、実際の介助量で補足する練習</li>
+<li>介護タクシーが営業していれば、<strong>高知医大までの往復見積</strong> を1社以上取る（比較用。安くなるとは限らない）
+<ul>
+<li>鈴ハイヤー 0880-34-2413</li>
+<li>介護タクシーしろくま 0880-34-2723</li>
+<li>アロハタクシー 070-2217-7273（長距離対応の案内あり）</li>
+<li>介護タクシーきのこ 090-4401-0635</li>
+</ul>
+</li>
+<li>中村駅から高知医大までの公共交通ルートと運賃を控える（汽車＋高知駅前バス「医大病院」行、または後免駅＋タクシー）</li>
+<li>24日朝の持ち物を袋にまとめる（申請書、被保険者証、診察券、マイナンバー、身分証、印鑑、困っていることリスト、日記コピー）</li>
+</ul>
+<hr>
+<h3 id="9月23日水祝引き継ぎの下書き役所は休み">9月23日（水・祝）：引き継ぎの下書き。役所は休み</h3>
+<p>本庁の水曜延長（19:00まで）は、祝日のため使えません。</p>
+<ul>
+<li>お母様用の引き継ぎメモを下書きする（24日夕方に清書して冷蔵庫などへ）
+<ul>
+<li>市からの電話は出る</li>
+<li>調査日が決まったら娘にすぐ連絡</li>
+<li>調査では「できた頃」ではなく「今の日常」を話す</li>
+<li>日記を調査員に見せてよい</li>
+<li>娘の電話番号と、調査中にその場でかけてよいこと</li>
+</ul>
+</li>
+<li>東京へ戻ったあとの自分のTODO（調査電話同席、ケアマネ依頼、次回受診の付添調整）を書いておく</li>
+<li>24日の動線を確認する（本庁の場所、8:30開庁、夜の出発時刻から逆算した帰宅時刻）</li>
+<li>申請書の記入漏れ・本人の氏名漢字・主治医名をもう一度見る</li>
+</ul>
+<hr>
+<h3 id="9月24日木唯一の平日開庁直後に提出し午後に相談する">9月24日（木）：唯一の平日。開庁直後に提出し、午後に相談する</h3>
+<p>場所：四万十市役所本庁 中村大橋通4丁目10<br>
+同じ建物に、高齢者支援課 介護保険係（0880-34-1165）と地域包括支援センター（0880-34-0170）があります。</p>
+<p><strong>8:20〜8:30 本庁へ到着。先に介護保険係で申請する。</strong></p>
+<p>伝える事実（飾らない）</p>
+<ul>
+<li>77歳。6月に高知医大で脳腫瘍手術、放射線治療後。自宅療養中</li>
+<li>だるさ、便秘、発語のしづらさ、認知機能の低下</li>
+<li>夏は漢字が書けていたリハビリ日記が、今は平仮名も難しい</li>
+<li>母は免許なしで二人暮らし。月1の高知医大（片道100km超、約2時間強）が限界</li>
+<li>幡多けんみん病院へは機械の都合で移せない</li>
+<li>東京の娘は今日まで現地にいる。訪問調査は東京から電話同席したい</li>
+</ul>
+<p>午前に必ずやること</p>
+<ul>
+<li>記入漏れを窓口で直し、<strong>その場で提出して受理させる</strong></li>
+<li>受付印または担当者名・今後の流れ・調査の連絡先をメモする</li>
+<li>主治医（高知医大）へ意見書が送られることを確認する</li>
+<li>「困っていることリスト」と日記コピーを、調査員に渡してもらえるか頼む</li>
+<li>続けて同じ本庁の包括へ行き、総合相談・ケアマネ候補2〜3か所・ガイドブックをもらう</li>
+<li>暫定ケアプラン（認定前のサービス開始）の可否を聞く</li>
+</ul>
+<p>午後（申請が終わってから）</p>
+<ol>
+<li><strong>高知医大 がん相談支援センター</strong> 088-880-2179（電話 9:00〜16:00）
+<ul>
+<li>幡多けんみん病院では必要な機械がなく、月1は高知医大継続</li>
+<li>汽車＋タクシーの長距離通院と、認知機能低下で家族の付き添い負荷が大きい</li>
+<li>相談したいこと：予約のまとめ方、院内移動・待ち時間、地元医療機関への対症療法（便秘・だるさ・処方）の分担、市から主治医意見書が届くこと</li>
+</ul>
+</li>
+<li>余裕があれば高齢者福祉係 0880-34-8066
+<ul>
+<li>あんしんコール（高齢者のみ世帯の緊急通報。協力員2名程度の承諾が必要）</li>
+<li>在宅介護手当・家族介護用品は <strong>要介護3以上が目安</strong>。今回は「認定後に再確認」でよい</li>
+</ul>
+</li>
+<li>余裕があれば四万十市社会福祉協議会 0880-35-3011
+<ul>
+<li>中村地域の配食（水曜昼食・1回300円）。対象に「夫婦とも65歳以上で認知症の配偶者を介護している世帯」が含まれる</li>
+</ul>
+</li>
+<li>見積が取れていなければ介護タクシーへ電話</li>
+<li>お母様への引き継ぎメモを清書して置く</li>
+</ol>
+<p>夜：出発。<strong>申請未了のまま出発しない。</strong> 調査同席ができなくても、受理されていればこの滞在の目的は達成です。</p>
+<hr>
+<h2 id="5-窓口で使う困っていることリスト調査包括向け">5. 窓口で使う「困っていること」リスト（調査・包括向け）</h2>
+<p>本人が調査で元気に見えると、実際の介護量より軽く判定されやすいです。事実を短く渡してください。24日は時間が短いので、<strong>事前に印刷して持っていく</strong>のがよいです。</p>
+<p>医療・身体</p>
+<ul>
+<li>脳腫瘍術後・放射線治療後。だるさ、便秘が続く</li>
+<li>発語がしづらい</li>
+<li>月1回、高知医大（南国市）へ片道2時間超で通院している。母は運転できない</li>
+</ul>
+<p>認知・生活（日記が証拠）</p>
+<ul>
+<li>2026年夏：漢字でリハビリ日記が書けていた</li>
+<li>2026年9月現在：平仮名も難しい</li>
+<li>薬の管理、予定の把握、金銭・外出は見守りや代行が必要か（事実を書く）</li>
+<li>一人で火や外出の安全が保てるか</li>
+</ul>
+<p>介護者（母）</p>
+<ul>
+<li>免許なし、遠方の子は東京</li>
+<li>通院の汽車・乗換・タクシー・院内待ちを一人で担っている</li>
+<li>日常の見守りが切れない</li>
+</ul>
+<p>希望する支援（認定後のイメージ。今すぐ契約しなくてよい）</p>
+<ul>
+<li>デイサービスや訪問介護で、母が休める時間をつくる</li>
+<li>訪問看護で、便秘・だるさ・服薬の相談を地元で受けられるようにする</li>
+<li>高知医大通院日の付添・移動の組み立て（保険で出る範囲と自費の切り分け）</li>
+</ul>
+<hr>
+<h2 id="6-月1の高知医大通院を軽くする認定と並行して進める">6. 月1の高知医大通院を軽くする（認定と並行して進める）</h2>
+<p>距離は変わらないので、「誰が・どの手段で・どこまで病院に任せるか」を変えます。</p>
+<h3 id="経済面">経済面</h3>
+<ul>
+<li>往復を介護タクシー一本にすると、距離的に高額になりやすい。見積は取るが、主手段にはしない</li>
+<li>基本は <strong>中村駅 → 高知駅（汽車）→ 高知駅前2番のりば「医大病院」バス（約30分）</strong>。歩行や乗換が厳しければ、高知駅〜病院または後免駅〜病院だけタクシー</li>
+<li>治療のための通院交通費は、公共交通が著しく困難な場合のタクシー代も含め、確定申告の医療費控除の対象になり得る。領収書を保管</li>
+<li>病院会計は限度額適用認定証・高額療養費を確認（医療費そのものの上限）</li>
+<li>四万十市福祉タクシー券は、身体障害者手帳などの条件付き。年齢と要介護だけでは使えない</li>
+</ul>
+<h3 id="精神面母の負荷">精神面（母の負荷）</h3>
+<ul>
+<li>認知機能と発語の低下があるので、乗換と院内移動を母一人に任せない設計にする</li>
+<li>認定後：ケアマネと「通院日だけヘルパー同行」「前後の日にデイで母を休ませる」などを検討</li>
+<li>がん相談支援センターに、予約時間の前倒し・検査と診察の同日化・院内案内を相談する</li>
+<li>便秘・だるさなどの対症療法を、地元のかかりつけで出せないか主治医に確認する（月1を「検査と専門医の判断」に絞ると、その日の滞在が短くなる）</li>
+<li>受診間隔を延ばせるかは <strong>主治医の判断のみ</strong>。こちらから決めない。ただし「移動負担で治療継続が危うい」ことは必ず伝える</li>
+</ul>
+<h3 id="中期初診からおおむね6か月後が目安">中期（初診からおおむね6か月後が目安）</h3>
+<p>手術が2026年6月なら、年末以降に検討できることが多いです。</p>
+<ul>
+<li>高次脳機能障害として <strong>精神障害者保健福祉手帳</strong>（診断書は脳神経外科医等でも可。初診から6か月経過が原則）</li>
+<li>言語障害や麻痺があれば <strong>身体障害者手帳</strong> も別途</li>
+<li>手帳があると、タクシー1割引、JRの障害者割引（等級による）など、月1移動の実費を下げられる場合がある</li>
+<li>相談先：市福祉事務所 社会福祉係 0880-34-1120、および高知医大の患者相談窓口</li>
+</ul>
+<p>在宅介護手当（月7,000円）と家族介護用品は、要介護3以上が目安なので、今回の申請結果を見てからでよいです。</p>
+<hr>
+<h2 id="7-滞在後東京に戻ってから">7. 滞在後（東京に戻ってから）</h2>
+<p>訪問調査はこの滞在には間に合いません。ここが本番の続きです。</p>
+<ol>
+<li>市から調査日の連絡が来たら、必ず電話またはビデオで同席する。お母様だけに任せない</li>
+<li>認定結果（目安は申請から30日、混み合うとそれ以上）</li>
+<li>要支援なら包括、要介護なら居宅介護支援事業所へケアプラン依頼</li>
+<li>ケアマネに渡す優先課題
+<ul>
+<li>母の休息（デイ／訪問介護）</li>
+<li>服薬・便秘・見守り（訪問看護）</li>
+<li>月1高知医大の移動と付添の現実的な組み合わせ</li>
+</ul>
+</li>
+<li>次回の高知医大受診日に、がん相談支援センターへ立ち寄り（対面は予約不要の案内あり）</li>
+<li>状態が申請時より明らかに落ちた場合は、区分変更をためらわない</li>
+</ol>
+<hr>
+<h2 id="8-連絡先">8. 連絡先</h2>
+<p>21〜23日は市・包括・病院相談窓口は休みです。電話は <strong>24日（木）</strong> に集中します。介護タクシーだけは祝日営業の場合があります。</p>
+<table>
+<thead>
+<tr>
+<th>先</th>
+<th>電話</th>
+<th>使う日</th>
+<th>使う理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高齢者支援課 介護保険係</td>
+<td>0880-34-1165</td>
+<td>24日午前</td>
+<td>認定申請の提出・調査の流れ</td>
+</tr>
+<tr>
+<td>地域包括支援センター（中村）</td>
+<td>0880-34-0170</td>
+<td>24日午前</td>
+<td>総合相談、調査の伝え方、ケアマネ紹介</td>
+</tr>
+<tr>
+<td>高齢者福祉係</td>
+<td>0880-34-8066</td>
+<td>24日午後</td>
+<td>あんしんコール、ガイドブック、手当の確認</td>
+</tr>
+<tr>
+<td>高知医大 がん相談支援センター</td>
+<td>088-880-2179</td>
+<td>24日午後</td>
+<td>通院負担、意見書、予約・待ち時間</td>
+</tr>
+<tr>
+<td>高知医大 地域医療連携室（代表経由可）</td>
+<td>088-866-5811</td>
+<td>24日午後</td>
+<td>患者相談、介護保険の意見書</td>
+</tr>
+<tr>
+<td>四万十市社会福祉協議会</td>
+<td>0880-35-3011</td>
+<td>24日午後</td>
+<td>配食、地域の実情</td>
+</tr>
+<tr>
+<td>市福祉事務所 社会福祉係</td>
+<td>0880-34-1120</td>
+<td>24日午後</td>
+<td>手帳・福祉タクシーの該当確認</td>
+</tr>
+</tbody>
+</table>
+<p>市役所本庁：〒787-8501 四万十市中村大橋通4丁目10</p>
+<hr>
+<h2 id="9-24日夜の時点で持って帰るもの">9. 24日夜の時点で持って帰るもの</h2>
+<ul>
+<li>申請の受付事実（控、メモ、担当者名）</li>
+<li>訪問調査は後日になること、連絡先電話番号</li>
+<li>ケアマネ候補の名前と電話</li>
+<li>高知医大への相談内容メモ（誰と何を話したか）</li>
+<li>介護タクシー見積と、汽車＋バスの運賃メモ</li>
+<li>お母様用の引き継ぎメモ（調査は娘が電話同席すること）</li>
+<li>リハビリ日記のコピー（原本は自宅、コピーは東京へ）</li>
+</ul>
+
+</body>
+</html>
