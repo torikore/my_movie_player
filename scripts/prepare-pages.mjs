@@ -29,9 +29,18 @@ if (!(await exists(appDist))) {
   throw new Error("apps/photo-3d-walkthrough/dist がありません。先に Vite ビルドを実行してください。");
 }
 
-await mkdir(join(out, "apps"), { recursive: true });
+await mkdir(join(out, "apps/photo-3d-walkthrough"), { recursive: true });
 await cp(join(root, "apps/index.html"), join(out, "apps/index.html"));
-await cp(appDist, join(out, "apps/photo-3d-walkthrough"), { recursive: true });
+await cp(
+  join(root, "apps/photo-3d-walkthrough/index.html"),
+  join(out, "apps/photo-3d-walkthrough/index.html"),
+);
+const appAssets = join(root, "apps/photo-3d-walkthrough/assets");
+if (await exists(appAssets)) {
+  await cp(appAssets, join(out, "apps/photo-3d-walkthrough/assets"), { recursive: true });
+} else {
+  await cp(appDist, join(out, "apps/photo-3d-walkthrough"), { recursive: true });
+}
 
 console.log("Pages 用 dist を作成しました。");
 

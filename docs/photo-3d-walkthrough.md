@@ -73,11 +73,12 @@ npm run dev:photo-3d
 
 ## Cloudflare Pages
 
+今の Pages はリポジトリをそのまま配信しています。そのため本番用の `apps/photo-3d-walkthrough/index.html` と `assets/` をコミットしています。ビルド設定を変えなくても `/apps/photo-3d-walkthrough/` で動きます。
+
+任意で Node ビルドにする場合:
+
 - Build command: `npm run build`
 - Build output directory: `dist`
-- 公開 URL: `/apps/photo-3d-walkthrough/`
-
-ルートの HTML はビルド時に `dist` へコピーされます。
 
 ## いまの状態
 

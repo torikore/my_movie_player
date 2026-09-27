@@ -3,6 +3,10 @@ import { MAX_INFER_EDGE, MODEL_ID } from "./config";
 
 env.allowLocalModels = false;
 env.useBrowserCache = true;
+const onnxWasm = (env as { backends?: { onnx?: { wasm?: { wasmPaths?: string } } } }).backends?.onnx?.wasm;
+if (onnxWasm) {
+  onnxWasm.wasmPaths = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2/dist/";
+}
 
 export type DepthMap = {
   data: Float32Array;

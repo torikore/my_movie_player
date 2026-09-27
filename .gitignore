@@ -5,3 +5,4 @@ dist
 .vite
 apps/*/node_modules
 apps/*/dist
+apps/*/assets/*.wasm
