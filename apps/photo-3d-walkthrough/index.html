@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>自分の世界 — 3Dウォークスルー</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="view"></canvas>
+
+      <section id="gate" class="panel">
+        <p class="eyebrow">Photo → World</p>
+        <h1>自分の世界へ、歩く。</h1>
+        <p class="lead">写真を1枚渡すと、奥行きのある場所になります。中に入って、少しだけ散歩できます。</p>
+
+        <label class="drop" id="drop">
+          <input id="file" type="file" accept="image/*" hidden />
+          <span>写真を置く、または選ぶ</span>
+          <small>端末の中だけで処理します。サーバーには送りません。</small>
+        </label>
+
+        <div class="row">
+          <button type="button" id="demo" class="ghost">デモ写真で試す</button>
+          <button type="button" id="settings-open" class="ghost">設定</button>
+        </div>
+        <p class="hint">Chrome / Edge 推奨。初回だけ立体化モデル（約100MB）をダウンロードします。</p>
+      </section>
+
+      <section id="loading" class="panel hidden" aria-live="polite">
+        <p class="eyebrow" id="load-title">準備しています</p>
+        <h2 id="load-message">立体化モデルを読み込んでいます</h2>
+        <div class="bar"><i id="load-bar"></i></div>
+        <p class="hint" id="load-detail">初回は数分かかることがあります。2回目からは速くなります。</p>
+      </section>
+
+      <aside id="hud" class="hidden">
+        <div class="hud-top">
+          <div>
+            <p class="eyebrow" id="scene-kicker">Your world</p>
+            <p id="scene-title">写真の中</p>
+          </div>
+          <button type="button" id="reset" class="ghost compact">別の写真</button>
+        </div>
+        <div class="moods" id="moods">
+          <button type="button" data-mood="original" class="on">そのまま</button>
+          <button type="button" data-mood="dusk">夕暮れ</button>
+          <button type="button" data-mood="snow">雪</button>
+          <button type="button" data-mood="neon">ネオン</button>
+        </div>
+        <p id="help" class="help">クリックで視点を固定　W A S D で歩く　マウスで見る　Esc で解除</p>
+      </aside>
+
+      <div id="joystick" class="hidden" aria-hidden="true">
+        <div id="stick"></div>
+      </div>
+
+      <section id="settings" class="panel hidden">
+        <p class="eyebrow">Optional</p>
+        <h2>設定</h2>
+        <p class="lead">Gemini の無料APIキーを入れると、写真の場所を短い言葉で案内します。空欄のままでも歩けます。</p>
+        <label class="field">
+          APIキー
+          <input id="gemini-key" type="password" autocomplete="off" placeholder="AIza..." />
+        </label>
+        <div class="row">
+          <button type="button" id="settings-save">保存して戻る</button>
+          <button type="button" id="settings-clear" class="ghost">消す</button>
+        </div>
+        <p class="hint">キーはこのブラウザにだけ保存します。画像生成は使いません。</p>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -56,10 +56,31 @@ Cloudflare Pages
 
 公開用リポジトリは [torikore/my_movie_player](https://github.com/torikore/my_movie_player) です。
 
+## 置き場所
+
+既存のルート HTML はそのままです。このアプリは次にあります。
+
+- アプリ: `apps/photo-3d-walkthrough/`
+- 一覧: `apps/index.html`
+- 今後の別機能も `apps/` 配下に足します
+
+## ローカル起動
+
+```bash
+npm install
+npm run dev:photo-3d
+```
+
+## Cloudflare Pages
+
+- Build command: `npm run build`
+- Build output directory: `dist`
+- 公開 URL: `/apps/photo-3d-walkthrough/`
+
+ルートの HTML はビルド時に `dist` へコピーされます。
+
 ## いまの状態
 
-- リポジトリはローカルのプロジェクトフォルダにクローン済み
-- Pages 接続済みの既存ファイル（`index.html` など）はそのまま
-- 3D ウォークスルーの実装は未着手
-
-次は、写真を選んで数十秒後に歩ける最小デモから作ります。
+- 既存 HTML はそのまま
+- 写真を選んで歩ける実装を `apps/photo-3d-walkthrough/` に追加済み
+- 奥行きモデルは初回に Hugging Face から取得（リポジトリには入れない）

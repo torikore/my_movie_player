@@ -1,0 +1,12 @@
+{
+  "name": "my_movie_player",
+  "private": true,
+  "workspaces": [
+    "apps/photo-3d-walkthrough"
+  ],
+  "scripts": {
+    "dev:photo-3d": "npm run dev -w photo-3d-walkthrough",
+    "build": "npm run build -w photo-3d-walkthrough && node scripts/prepare-pages.mjs",
+    "build:photo-3d": "npm run build -w photo-3d-walkthrough"
+  }
+}
