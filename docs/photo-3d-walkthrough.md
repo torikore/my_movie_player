@@ -64,12 +64,41 @@ Cloudflare Pages
 - 一覧: `apps/index.html`
 - 今後の別機能も `apps/` 配下に足します
 
-## ローカル起動
+## 次回動かす場合
+
+### 公開サイトを見るだけ
+
+ブラウザで次を開きます。開発サーバーは不要です。
+
+https://my-movie-player.pages.dev/apps/photo-3d-walkthrough/
+
+Chrome か Edge を使います。初回だけ立体化モデル（約100MB）をダウンロードします。古い画面のときは Ctrl + F5 で再読み込みします。
+
+### ローカルで開発する
+
+1. リポジトリのルート（`SuperPJ001`）を開く
+2. 初回、または依存関係を変えたあとだけ `npm install`
+3. `npm run dev:photo-3d`
+4. 表示された URL（通常は `http://localhost:5173/`）を Chrome / Edge で開く
+5. 止めるときはターミナルで `Ctrl + C`
 
 ```bash
 npm install
 npm run dev:photo-3d
 ```
+
+### 変更を Pages に出す
+
+ソースを直したあとは、本番用の `assets/` を作り直してから push します。今の Pages はリポジトリをそのまま配信しているためです。
+
+```bash
+npm run build
+git add apps/photo-3d-walkthrough
+git commit -m "Update photo-3d-walkthrough"
+git push
+```
+
+反映まで数十秒かかることがあります。
 
 ## Cloudflare Pages
 
